@@ -1,2 +1,0 @@
-# Myasoshop
- Интернет магазин VZCJIJG
