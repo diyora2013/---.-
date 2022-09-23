@@ -1,0 +1,13 @@
+<section id="{{ ishi_randomnumer }}" class="ishibannerblock">
+	<div class="row">
+		{% for banner in banners %}
+			<div class="bannerblock {{ column_class }}">
+				<div class="image-container">
+					<a href="{{ banner.link }}" class="{{ style }} {{ scale }}">
+						<img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive">  
+					</a>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</section>

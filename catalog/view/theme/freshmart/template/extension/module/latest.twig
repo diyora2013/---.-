@@ -1,0 +1,91 @@
+<section class="featured-products clearfix">  
+  <h2 class="home-title hidden-sm hidden-xs">
+      {{ heading_title }}
+  </h2>
+  <div class="block-title clearfix  hidden-lg hidden-md collapsed" data-target="#latest-container" data-toggle="collapse">
+    <span class="page-title">{{ heading_title }}</span>
+    <span class="navbar-toggler collapse-icons">
+      <i class="fa fa-angle-down add"></i>
+      <i class="fa fa-angle-up remove"></i>
+    </span>
+  </div>
+  <div id="latest-container" class="collapse in data-toggler">
+    <div id="newlatest" class="owl-carousel">
+     {% set counter = 1 %}
+      {% set lastproduct = products|length %}
+      {% for product in products %}
+        {% if counter%2 ==1 %}
+          <div class="multilevel-item">
+        {% endif %}
+        <div class="product-thumb transition">
+        	<div class="product-container">
+            <div class="image">
+              <a href="{{ product.href }}">
+                <img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" />
+                {% if product.extra != '' %}
+                  <img class="product-img-extra img-responsive" alt="{{ product.name }}" title="{{ product.name }}" src= "{{ product.extra }}"/>
+                {% endif %}
+              </a>
+            </div>
+            <div class="caption">
+              <h4><a href="{{ product.href }}">{{ product.name }}</a></h4>
+              <p class="description">{{ product.description }}</p>
+              {% if product.price %}
+                <p class="price">
+                  {% if not product.special %}
+                  {{ product.price }}
+                  {% else %}
+                  <span class="price-new">{{ product.special }}</span> <span class="price-old">{{ product.price }}</span>
+                  {% endif %}
+                  {% if product.tax %}
+                  <span class="price-tax">{{ text_tax }} {{ product.tax }}</span>
+                  {% endif %}
+                </p>
+              {% endif %}
+              {% if product.rating %}
+                <div class="rating">
+                  {% for i in 1..5 %}
+                    {% if product.rating < i %} 
+                      <span class="fa fa-stack">
+                        <i class="fa fa-star-o fa-stack-2x"></i>
+                      </span> 
+                    {% else %} 
+                      <span class="fa fa-stack">
+                        <i class="fa fa-star fa-stack-2x"></i>
+                      </span> 
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+              <div class="button-group">  
+                <div class="btn-quickview"> 
+                  <div class="quickview-button button" data-toggle="tooltip" title=" {{ quick_view }}"> 
+                    <a class="quickbox" href="{{ product.quick }}">
+                          <i class="fa fa-eye" aria-hidden="true"></i>
+                        </a>
+                  </div>
+                </div>
+                <div class="btn-wishlist">
+                  <button type="button" data-toggle="tooltip" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product.product_id }}');"><i class="fa fa-heart"></i></button>
+                </div>
+                <div class="btn-compare">
+                  <button type="button" data-toggle="tooltip" title="{{ button_compare }}" onclick="compare.add('{{ product.product_id }}');"><i class="fa fa-exchange"></i></button>
+                </div>
+                <div class="btn-cart">
+                  <button type="button" data-toggle="tooltip" title="{{ button_cart }}" onclick="cart.add('{{ product.product_id }}');">
+                    <i class="fa fa-shopping-cart"></i> 
+                    <span class="lblcart">{{ button_cart }}</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+       </div>
+        {% if counter%2 ==0 or counter == lastproduct %}
+          </div>
+        {% endif %}
+      {% set counter = counter+1 %}
+      {% endfor %} 
+    </div>
+  </div>
+</section>

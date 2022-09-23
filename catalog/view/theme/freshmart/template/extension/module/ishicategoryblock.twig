@@ -1,0 +1,32 @@
+<section id="{{ ishi_randomnumer }}" class="ishicategoryblock">
+    <div class="block-title clearfix  hidden-lg hidden-md collapsed" data-target="#category-container" data-toggle="collapse">
+        <span class="page-title">{{ heading_title }}</span>
+        <span class="navbar-toggler collapse-icons">
+        <i class="fa fa-angle-down add"></i>
+        <i class="fa fa-angle-up remove"></i>
+        </span>
+    </div>
+    <div id="category-container" class="collapse data-toggler">
+        <div class="panel-group" id="accordion">
+        {% set item = 1 %}
+        {% for banner in banners %} 
+            <div class="panel panel-default">
+            <div class="panel-heading"> 
+                <a class="text-container {% if item == 1%}active{% endif %}" data-toggle="collapse" data-target="#collapseOne_{{item}}" data-parent="#accordion">
+                <h2>{% if item < 9%} 0{{item}} {% else %} {{item}} {% endif %}</h2>      
+                <p class="text-container">{{ banner.title }}</p>
+                </a>
+            </div>               
+            <div id="collapseOne_{{item}}" class="image-container panel-collapse collapse {% if item == 1%}in{% endif %}">
+                <div class="panel-body">
+                    <a href="{{ banner.link }}">
+                        <img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive" />
+                    </a>
+                </div> 
+            </div> 
+            </div>
+            {% set item = item+1 %}
+        {% endfor %} 
+        </div>
+    </div>
+</section>

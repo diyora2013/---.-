@@ -1,0 +1,308 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  	<div class="page-header">
+		<div class="container-fluid">
+			<div class="pull-right">
+				<button type="submit" form="form-module" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+				<a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+				<h1>{{ heading_title }}</h1>
+				<ul class="breadcrumb">
+					{% for breadcrumb in breadcrumbs %}
+					<li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+		<div class="container-fluid">
+			{% if error_warning %}
+			<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			</div>
+			{% endif %}
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_edit }}</h3>
+				</div>
+				<div class="panel-body">
+					<form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-module" class="form-horizontal">
+						<div class="tab-pane" id="tab-design">
+							<ul class="nav nav-tabs">
+								<li class="active"><a href="#tab-general" data-toggle="tab">{{ tab_general }}</a></li>
+								<li><a href="#tab-testimonial" data-toggle="tab">{{ tab_testinmonial }}</a></li>
+							</ul>
+							<div class="tab-content">
+								<div class="tab-pane active" id="tab-general">
+									<div class="form-group">
+										<label class="col-sm-2 control-label" for="input-name">{{ entry_name }}</label>
+										<div class="col-sm-10">
+											<input type="text" name="name" value="{{ name }}" placeholder="{{ entry_name }}" id="input-name" class="form-control" />
+											{% if error_name %}
+												<div class="text-danger">{{ error_name }}</div>
+											{% endif %}
+										</div>
+									</div>						
+									<div class="form-group">
+										<div class="col-sm-6">
+											<label class="col-sm-4 control-label" for="input-autoplay">{{ entry_autoplay }}</label>
+											<div class="col-sm-8">
+												<label class="switch">
+													{% if autoplay %}
+														<input type="checkbox" name="autoplay" value="1" class="primary" checked="checked" id="input-autoplay" />
+													{% else %}
+														<input type="checkbox" name="autoplay" value="1" class="primary" id="input-autoplay" />
+													{% endif %}
+													<span class="slider round"></span>
+												</label>
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<label class="col-sm-4 control-label" for="input-bgcolor">{{ entry_bgcolor }}</label>
+											<div class="col-sm-8">
+												<input type="text" name="bgcolor" class="form-control color" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="{{ bgcolor }}">
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
+										<div class="col-sm-10">
+											<select name="status" id="input-status" class="form-control">
+												{% if status %}
+												<option value="1" selected="selected">{{ text_enabled }}</option>
+												<option value="0">{{ text_disabled }}</option>
+												{% else %}
+												<option value="1">{{ text_enabled }}</option>
+												<option value="0" selected="selected">{{ text_disabled }}</option>
+												{% endif %}
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane" id="tab-testimonial">
+									<div class="tab-pane">
+										<ul class="nav nav-tabs" id="language">
+										{% for language in languages %}
+										<li><a href="#language{{ language.language_id }}" data-toggle="tab"><img src="language/{{ language.code }}/{{ language.code }}.png" title="{{ language.name }}" /> {{ language.name }}</a></li>
+										{% endfor %}
+										</ul>
+										<div class="tab-content">
+										{% for language in languages %}
+										<div class="tab-pane" id="language{{ language.language_id }}">		
+											<div class="form-group">
+												<label class="col-sm-2 control-label" for="input-title">{{ entry_testimonial_title }}</label>
+												<div class="col-sm-10">
+													<input type="text" name="title[{{language.language_id}}]" value="{{ title[language.language_id] }}" placeholder="{{ entry_testimonial_title }}" id="input-title" class="form-control" />
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-sm-2">
+													<ul class="nav nav-pills nav-stacked countul" id="testimonialtab">
+														{% set testimonial_row = 0 %}
+														{% for ishi_testimonial in ishi_testimonials[language.language_id] %}
+															<li class="countli"><a href="#tab-singletestimonial{{ language.language_id }}lan{{ testimonial_row }}" data-toggle="tab"><i class="fa fa-minus-circle" onclick="$('a[href=\'#tab-singletestimonial{{ language.language_id }}lan{{ testimonial_row }}\']').parent().remove(); $('#tab-singletestimonial{{ language.language_id }}lan{{ testimonial_row }}').remove(); $('#testimonialtab a:first').tab('show');"></i> {{ ishi_testimonial.username }} </a></li>
+														{% set testimonial_row = testimonial_row + 1 %}
+														{% endfor %}
+															<li><button type="button" class="btn btn-block" onclick="addtestimonial({{ language.language_id }});"><i class="fa fa-plus-circle"></i> {{ entry_addtestimonial }} </button></li>
+													</ul>
+												</div>
+												<div class="col-sm-10">
+												<div class="tab-content" id="ishi_addtestimonial">
+												{% set testimonial_row = 0 %}
+												{% for ishi_testimonial in ishi_testimonials[language.language_id] %}
+												<div class="tab-pane" id="tab-singletestimonial{{ language.language_id }}lan{{ testimonial_row }}">
+												<div class="form-group">
+													<label class="col-sm-2 control-label" for="input-image-{{ language.language_id }}{{ testimonial_row }}">{{ entry_image }}</label>
+														<div class="col-sm-10">
+															<a href="" id="thumb-image-{{ language.language_id }}{{ testimonial_row }}" data-toggle="image" class="img-thumbnail"><img src="{{ ishi_testimonial.thumb }}" alt="" title="" data-placeholder="{{ ishi_testimonial.placeholder }}" /></a>
+															<input type="hidden" name="ishitestimonial[{{ language.language_id }}][{{ testimonial_row }}][image]" value="{{ ishi_testimonial.image }}" id="input-image-{{ language.language_id }}{{ testimonial_row }}" />
+														</div>
+													</div>
+													<div class="form-group">
+													<label class="col-sm-2 control-label" for="input-description{{ language.language_id }}-{{ testimonial_row }}">{{ entry_description }}</label>
+													<div class="col-sm-10">
+													<textarea name="ishitestimonial[{{ language.language_id }}][{{ testimonial_row }}][description]" placeholder="{{ entry_description }}" rows="4" id="input-description{{ language.language_id }}-{{ testimonial_row }}" data-toggle="summernote" class="form-control">{{ ishi_testimonial.description }}</textarea>
+													</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-2 control-label" for="input-username-{{ testimonial_row }}">{{ entry_username }}</label>
+														<div class="col-sm-10">
+															<input type="text" name="ishitestimonial[{{ language.language_id }}][{{ testimonial_row }}][username]" value="{{ ishi_testimonial.username }}" placeholder="{{ entry_username }}" class="form-control" id="input-username-{{ testimonial_row }}" />
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-2 control-label" for="input-designation-{{ testimonial_row }}">{{ entry_designation }}</label>
+														<div class="col-sm-10">
+															<input type="text" name="ishitestimonial[{{ language.language_id }}][{{ testimonial_row }}][designation]" value="{{ ishi_testimonial.designation }}" placeholder="{{ entry_designation }}" class="form-control" id="input-designation-{{ testimonial_row }}"/>
+														</div>
+													</div>
+												</div>
+												{% set testimonial_row = testimonial_row + 1 %}
+													{% endfor %}
+												</div>
+												</div>
+											</div>
+										</div>
+										{% endfor %}
+										</div>
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<style>
+		/* The switch - the box around the slider */
+		.switch {
+		position: relative;
+		display: inline-block;
+		width: 60px;
+		height: 34px;
+		}
+
+		/* Hide default HTML checkbox */
+		.switch input {display:none;}
+
+		/* The slider */
+		.slider {
+		position: absolute;
+		cursor: pointer;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: #ccc;
+		-webkit-transition: .4s;
+		transition: .4s;
+		}
+
+		.slider:before {
+		position: absolute;
+		content: "";
+		height: 26px;
+		width: 26px;
+		left: 4px;
+		bottom: 4px;
+		background-color: white;
+		-webkit-transition: .4s;
+		transition: .4s;
+		}
+		input.default:checked + .slider {
+		background-color: #444;
+		}
+		input.primary:checked + .slider {
+		background-color: #2196F3;
+		}
+		input.success:checked + .slider {
+		background-color: #8bc34a;
+		}
+		input.info:checked + .slider {
+		background-color: #3de0f5;
+		}
+		input.warning:checked + .slider {
+		background-color: #FFC107;
+		}
+		input.danger:checked + .slider {
+		background-color: #f44336;
+		}
+
+		input:focus + .slider {
+		box-shadow: 0 0 1px #2196F3;
+		}
+
+		input:checked + .slider:before {
+		-webkit-transform: translateX(26px);
+		-ms-transform: translateX(26px);
+		transform: translateX(26px);
+		}
+
+		/* Rounded sliders */
+		.slider.round {
+		border-radius: 34px;
+		}
+
+		.slider.round:before {
+		border-radius: 50%;
+		}
+	</style>
+	<script type="text/javascript">
+
+		var testimonial_row = $(".countli").length;
+		function addtestimonial(language_id) {
+				html  = '<div class="tab-pane" id="tab-singletestimonial'+ language_id +'lan'+ testimonial_row +'">';
+										
+				html  += '<div class="form-group"> <label class="col-sm-2 control-label" for="thumb-image'+ language_id +'-'+ testimonial_row +'">{{ entry_testimonial_image }}</label> <div class="col-sm-10"><a href="" id="thumb-image'+ language_id +'-'+ testimonial_row +'" data-toggle="image" class="img-thumbnail"><img src="{{ testimonial_thumb }}" alt="" title="" data-placeholder="{{ testimonial_placeholder }}"/></a><input type="hidden" name="ishitestimonial['+ language_id +']['+ testimonial_row +'][image]" value="{{ testimonial_image }}" id="input-image'+ language_id +'-'+ testimonial_row +'" /></div></div>';
+				
+				html  += '<div class="form-group">';
+				html  += '<label class="col-sm-2 control-label" for="input-description'+ language_id +'-'+ testimonial_row +'">{{ entry_description }}</label>';
+				html  += '<div class="col-sm-10">';
+				html  += '<textarea name="ishitestimonial['+ language_id +']['+ testimonial_row +'][description]" placeholder="{{ entry_description }}" rows="4" id="input-description'+ language_id +'-'+ testimonial_row +'" data-toggle="summernote" class="form-control"></textarea>';
+				html  += '</div>';
+				html  += '</div>';
+				
+				html  += '<div class="form-group">';
+				html  += '<label class="col-sm-2 control-label" for="input-username'+ language_id +'-'+ testimonial_row +'">{{ entry_username }}</label>';
+				html  += '<div class="col-sm-10">';
+				html  += '<input type="text" name="ishitestimonial['+ language_id +']['+ testimonial_row +'][username]" placeholder="{{ entry_username }}" class="form-control"/>';
+				html  += '</div>';
+				html  += '</div>';
+				
+				html  += '<div class="form-group">';
+				html  += '<label class="col-sm-2 control-label" for="input-designation'+ language_id +'-'+ testimonial_row +'">{{ entry_designation }}</label>';
+				html  += '<div class="col-sm-10">';
+				html  += '<input type="text" name="ishitestimonial['+ language_id +']['+ testimonial_row +'][designation]" value="" placeholder="{{ entry_designation }}" class="form-control"/>';		
+				html  += '</div>';
+				html  += '</div>';
+				
+				$('#tab-testimonial #language'+ language_id +' #ishi_addtestimonial').append(html);
+
+				$('#language'+ language_id +' #testimonialtab > li:last-child').before('<li><a href="#tab-singletestimonial'+ language_id +'lan' + testimonial_row + '" data-toggle="tab"><i class="fa fa-minus-circle" onclick=" $(\'#testimonialtab a:first\').tab(\'show\');$(\'a[href=\\\'#tab-singletestimonial'+ language_id +'lan' + testimonial_row + '\\\']\').parent().remove(); $(\'#tab-singletestimonial'+ language_id +'lan' + testimonial_row + '\').remove();"></i> {{ entry_testinmonial }} </li>');
+				
+				$('#language'+ language_id +' #testimonialtab a[href=\'#tab-singletestimonial'+ language_id +'lan' + testimonial_row + '\']').tab('show');
+
+				testimonial_row++;
+			}
+		{% for language in languages %}
+		var ln = '{{ language.language_id }}' + ' a:first';
+		
+		$('#language' + ln).tab('show');
+		{% endfor %}
+	</script>
+	<script src="view/javascript/bootstrap/colorpicker/jquery.minicolors.js" type="text/javascript"></script>
+	<link href="view/javascript/bootstrap/colorpicker/jquery.minicolors.css" type="text/css" rel="stylesheet"/>
+	<script type="text/javascript" src="view/javascript/summernote/summernote.js"></script>
+	<link href="view/javascript/summernote/summernote.css" rel="stylesheet" />
+	<script type="text/javascript" src="view/javascript/summernote/summernote-image-attributes.js"></script>
+	<script type="text/javascript" src="view/javascript/summernote/opencart.js"></script>
+	<script type="text/javascript">
+		$('#language a:first').tab('show');
+	</script>
+	<script type="text/javascript">
+		$(document).ready( function() {
+		$('.color').each( function() {
+			$(this).minicolors({
+			control: $(this).attr('data-control') || 'hue',
+			defaultValue: $(this).attr('data-defaultValue') || '',
+			format: $(this).attr('data-format') || 'hex',
+			keywords: $(this).attr('data-keywords') || '',
+			inline: $(this).attr('data-inline') === 'true',
+			letterCase: $(this).attr('data-letterCase') || 'lowercase',
+			opacity: $(this).attr('data-opacity'),
+			position: $(this).attr('data-position') || 'bottom',
+			swatches: $(this).attr('data-swatches') ? $(this).attr('data-swatches').split('|') : [],
+			change: function(value, opacity) {
+				if( !value ) return;
+				if( opacity ) value += ', ' + opacity;
+				if( typeof console === 'object' ) {
+				console.log(value);
+				}
+			},
+			theme: 'bootstrap',
+			});
+		});
+		});
+	</script>
+</div>
+{{ footer }}

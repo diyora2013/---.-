@@ -1,0 +1,93 @@
+<div class="block_newsletter col-lg-4 col-md-4 col-sm-12 col-xs-12">
+	<div id="boxes" class="newletter-container">
+		<div style="" id="dialog" class="window">
+			<div class="box">
+				<div id="newsletter-container" class="box-content">
+					<div class="newsletter_text">
+						<div class="newsletter-content">
+							<div class="newsletter-img">
+								<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+									<symbol id="Layer_1" viewBox="120 140 280 280">
+										<path d="M501.801,139.942H171.312c-5.633,0-10.199,4.566-10.199,10.199v19.235h-97.21c-5.633,0-10.199,4.566-10.199,10.199
+						c0,5.633,4.566,10.199,10.199,10.199h97.21v132.452h-58.101c-5.633,0-10.199,4.566-10.199,10.199s4.566,10.199,10.199,10.199
+						h58.101v19.235c0,5.633,4.566,10.199,10.199,10.199h330.489c5.633,0,10.199-4.566,10.199-10.199V150.141
+						C512,144.508,507.434,139.942,501.801,139.942z M476.641,160.34l-140.07,114.985L197.14,160.34H476.641z M491.602,351.661h-310.09
+						v-177.77l148.556,122.51c1.884,1.553,4.186,2.331,6.489,2.331c2.295,0,4.591-0.772,6.471-2.316L491.602,174.45V351.661z"/>
+										<path d="M119.673,244.768H10.199C4.566,244.768,0,249.334,0,254.967c0,5.633,4.566,10.199,10.199,10.199h109.474
+						c5.633,0,10.199-4.566,10.199-10.199C129.873,249.334,125.306,244.768,119.673,244.768z"/>
+										<path d="M69.355,322.227h-5.451c-5.633,0-10.199,4.566-10.199,10.199c0,5.633,4.566,10.199,10.199,10.199h5.451
+						c5.633,0,10.199-4.566,10.199-10.199C79.554,326.793,74.988,322.227,69.355,322.227z"/>	
+									</symbol>
+								</svg>
+								<svg class="icon" viewBox="0 0 40 22"><use xlink:href="#Layer_1" x="0%" y="0%"></use></svg>
+							</div>
+							<h2 class="title_block">{{ title }}</h2>
+						</div>
+					</div>
+					<div id="newsletter">
+						<div id="frm_subscribe" class="newsletter_form">
+							<form name="subscribe" id="subscribe">
+								<input type="text" class="text-email" placeholder="{{ entry_email }}" value="" name="subscribe_email" id="subscribe_email">
+								<input type="hidden" class="text-email" placeholder="{{ entry_email }}" value="" name="subscribe_name" id="subscribe_name" />
+								<a class="button btn-submit" onclick="email_subscribe()"><span>{{ entry_button  }}</span>
+								</a>
+								<div id="notification-normal"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<script type="text/javascript">
+		function email_subscribe(){
+			$.ajax({
+					type: 'post',
+					url: 'index.php?route=extension/module/newslettersubscribe/subscribe',
+					dataType: 'html',
+					data:$("#subscribe").serialize(),
+					success: function (html) {
+					try {
+					
+						eval(html);
+					
+					} catch (e) {
+					}
+						
+					}});	
+		}
+		function email_unsubscribe(){
+			$.ajax({
+					type: 'post',
+					url: 'index.php?route=extension/module/newslettersubscribe/unsubscribe',
+					dataType: 'html',
+					data:$("#subscribe").serialize(),
+					success: function (html) {
+							try {
+							
+								eval(html);
+							
+							} catch (e) {
+							}
+					}}); 
+			$('html, body').delay( 1500 ).animate({ scrollTop: 0 }, 'slow'); 
+		}
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#subscribe_email').keypress(function(e) {
+				if(e.which == 13) {
+					e.preventDefault();
+					email_subscribe();
+				}
+				var name= $(this).val();
+				$('#subscribe_name').val(name);
+			});
+			$('#subscribe_email').change(function() {
+			var name= $(this).val();
+					$('#subscribe_name').val(name);
+			});
+		
+		});
+	</script>
+</div>

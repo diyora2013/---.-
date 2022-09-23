@@ -1,0 +1,48 @@
+<div id="{{ ishi_randomnumer }}" class="ishislider col-lg-9 col-md-9 col-sm-12 col-xs-12">
+  <div class="owl-carousel">
+    {% for ishi_sliderimage in ishi_sliderimages %}
+      <div class="item">
+          <a href="{{ ishi_sliderimage.link }}" class="slideshow__link">
+            <img src="{{ ishi_sliderimage.image }}" alt="{{ ishi_sliderimage.title }}" class="img-responsive" />
+            <div class="container">
+              <div class="slider-content col-lg-6 col-md-6 col-sm-6 col-xs-6 {{ishi_sliderimage.textposition}}" style="text-align:{{ishi_sliderimage.textalignment}}">
+                {% if ishi_sliderimage.subtitle %}
+                  <div class="sub-title" style="color:{{ishi_sliderimage.subtitlecolor}}">{{ ishi_sliderimage.subtitle}}</div>
+                {% endif %}
+                {% if ishi_sliderimage.title %}
+                  <div class="main-title" style="color: {{ishi_sliderimage.titlecolor}}">{{ ishi_sliderimage.title }}</div>
+                {% endif %}
+                {% if ishi_sliderimage.description %}
+                  <div class="desc" >
+                    <p style="color: {{ishi_sliderimage.descriptioncolor}}">{{ ishi_sliderimage.description }}</p>
+                  </div>
+                {% endif %}
+                {% if ishi_sliderimage.btntext %}
+                  <div class="slider-btn"><span class="btn-default btn">{{ ishi_sliderimage.btntext }}</span></div>
+                {% endif %}
+              </div> 
+            </div>
+          </a>
+      </div>
+    {% endfor %} 
+  </div>
+  <script type="text/javascript">
+    $('#{{ ishi_randomnumer }} .owl-carousel').owlCarousel({
+        loop:true,
+        nav:{{ navigation }},
+        dots:{{ dot }},
+        autoplay:{{ autoplay }},
+        rtl: $('html').attr('dir') == 'rtl'? true : false,
+        animateOut: 'fadeOut',
+        dotsClass: 'owl-dots {{ dot_style }}',
+        navClass: ["owl-prev {{ navigation_style }}","owl-next {{ navigation_style }}"],
+        navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+        responsive:{
+            0:{
+                items:1
+            }
+        }
+    });
+  </script>
+</div>
+<div id="_mobile_servicesblock"></div>

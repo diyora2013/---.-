@@ -1,0 +1,27 @@
+#product-search {
+	.search-criteria {
+		border: 1px solid #eeeeee;
+		padding: 10px;
+		.select-wrapper {
+		    position: relative;
+		}
+		.checkbox-inline {
+			line-height: 20px;
+		}
+		.search-list {
+			margin-bottom: 15px;
+			.form-control {
+				margin: 0;
+				font-size: 12px;
+				border: 1px solid #e0e0e0;
+				background-color: #fff;
+				padding: 0 10px;
+				color: #333;
+				position: relative;
+				text-decoration: none;
+				border-radius: 0;
+				box-shadow: none;
+			}
+		}
+	}
+}

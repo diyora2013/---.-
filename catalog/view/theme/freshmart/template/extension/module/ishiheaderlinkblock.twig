@@ -1,0 +1,11 @@
+<div id="_desktop_link_menu">
+  <div id="header_ishiheaderlinks" class="header-block">
+    <ul class="bullet link_container">
+		{% for extra_page in extra_pages %}
+      	<li><a class="extra-link" href="{{ extra_page.link }}">{{ extra_page.title }}</a></li>
+	  	{% endfor %}
+    </ul>
+  </div>
+</div>
+<div id="view_text">View More</div>
+<div id="menu_text">Menu</div>

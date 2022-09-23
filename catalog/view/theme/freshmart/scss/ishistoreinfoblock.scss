@@ -1,0 +1,51 @@
+.ishistoreinfoblock{
+	padding: 0;
+	@media (max-width: 543px) {
+		width: 100%;
+		background-color: $brand-primary;
+	}
+	.ishistoreinfo-inner{
+		position: relative;
+		z-index: 1;
+		padding: 54px 0;
+		background: $brand-secondary;
+		@media (min-width: 992px) {
+			-webkit-clip-path: polygon(0 0, 57% 0, 100% 100%, 0% 100%);
+			clip-path: polygon(0 0, 57% 0, 100% 100%, 0% 100%);
+		}
+		@media (max-width: 991px) {
+			padding: 52px 0;
+		}
+		@media (max-width: 767px) {
+			padding: 31px 0;
+		}
+		.store-logo{
+			width: 68%;
+			position: relative;
+			display: block;
+			text-align: center;
+			@media (max-width: 991px) {
+				width:100%;
+			}
+			img {
+				max-width: 100%;
+			}
+			&:after {
+				display: none;
+			}
+		}
+		.store-description{
+		    margin-bottom: 0;
+		    p{
+				line-height: 24px;
+				font-size: 14px;
+				font-family: $primary-font;
+				margin-bottom:0;
+				color: #666666;
+				@media (min-width: 1200px) {/* If media is above 1199 */
+					width: 85%;
+				}
+		    }
+		}
+	}
+}

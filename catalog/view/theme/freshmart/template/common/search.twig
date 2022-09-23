@@ -1,0 +1,18 @@
+<div id="search" class="input-group">
+  <input id="ajax-search-text" type="text" name="search" value="{{ search }}" placeholder="{{ text_search }}" class="form-control input-lg" />
+  <div class="ajaxishi-search" style="display: none;"><ul></ul></div>
+  <span class="input-group-btn">
+    <button id="ajax-search-btn" type="button" class="btn btn-default btn-lg">{{ text_btn }}<i class="fa fa-search"></i></button>
+  </span>
+</div>
+
+<script>
+    (function() {
+        document.getElementById('ajax-search-text').addEventListener('keypress', function(event) {
+            if (event.keyCode == 13) {
+                event.preventDefault();
+                document.getElementById('ajax-search-btn').click();
+            }
+        });
+    }());
+</script>

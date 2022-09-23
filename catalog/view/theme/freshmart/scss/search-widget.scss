@@ -1,0 +1,287 @@
+#_desktop_seach_widget {
+  @media (min-width: 992px) {/* If media is above 1199 */
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+  }  
+  @media screen and (min-width: 992px) and (max-width: 1199px) {
+    width: 50%;
+  }
+  @media (max-width: 991px) {
+    /* If media is below 1200 */
+    display:none;
+  }
+}
+.search-widget { 
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+  @media (max-width: 991px) {
+    /* If media is below 992 */
+    float: right;
+    position: relative;
+  }
+  .search-logo{
+    @media (max-width: 991px) {
+      width: 40px;
+      height: 40px;
+      display: block;
+      fill: $icon-responsivecolor;
+    }
+  }
+  .searchboxform {
+    position: absolute;
+    left: 0;
+    width: 26%;
+    @media (max-width: 1200px) {
+      /* If media is below 1200 */
+      width: 37%;
+    }
+    @media (max-width: 1199px) {
+      /* If media is below 1199 */
+      display: none;
+    }
+    .ishicategory-select {
+      border: 0;
+      height: 45px;
+      padding: 0 15px;
+      font-weight: 400;
+      font-size: 13px;
+      width: 100%;
+      z-index: 11;
+      color: $brand-primary;
+      cursor: pointer;
+      border-radius: 50px 0 0 50px;
+      outline: none;
+      background: $header-top-bg-color url(../img/arrow-down.png) no-repeat right 5px center/30px 30px;
+      position: relative;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      &:focus {
+        outline: none;
+      }
+      option {
+        color: #111111;
+        background: #ffffff;
+      }
+    }
+  }
+  form {
+    z-index: 3;
+    position: relative;
+    width: 100%;
+    max-width: 470px;
+    display: block;
+    padding: 0;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    @media (max-width: 991px) {
+      position: absolute;
+      left: 0;
+      top: 50px;
+      display: none;
+      width: auto;
+    }
+    .input-group{
+      width: 100%;
+    }
+    input[type="text"] {
+      @media (max-width: 1199px) {
+        padding-right:80px;
+      }
+      @media (max-width: 991px) {
+        min-width:280px;
+        padding-right:50px;
+      }
+      @media (max-width: 543px) {/* If media is below 544 */
+        min-width:250px;
+      }
+      width: 100%;
+      border: 1px solid $border-color;
+      height: 40px;
+      padding: 5px 10px;
+      padding-right:130px;
+      margin: 0;
+      background: $light-color;
+      text-transform: capitalize;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.8px;
+      color: #999999;
+      &:focus{
+        outline: none;
+        color: $header-text-color;
+        background-color: $light-color;
+      }
+      &::placeholder{
+        color: #999999;
+      }
+
+    }
+    .input-group-btn {
+      position: absolute;
+      right: 0;
+    }
+    button {
+      @media (max-width: 1199px) {
+        padding: 10px 15px;
+      }
+      @media (max-width: 991px) {
+        font-size:0;
+      }
+      position: absolute !important;
+      right: 0;
+      border: none;
+      background: $brand-third;
+      height: 40px;
+      font-size: 14px;
+      font-weight: 400;
+      color: $light-color;
+      text-transform:capitalize;
+      padding: 10px 30px;
+      outline: none;
+      z-index: 11;
+      -ms-transition: all 0.3s;
+      -webkit-transition: all 0.5s;
+      -moz-transition: all 0.5s;
+      -o-transition: all 0.5s;
+      transition: all 0.5s;
+      &:hover, &:focus {
+        border: 0;
+        background-color: $brand-secondary;
+        color: $light-color;
+      }
+      &:active {
+        &:focus {
+          background-color: $brand-secondary;
+          color: $light-color;
+          border: 0;
+        }
+      }
+      i{
+        display: none;
+        @media (max-width: 991px) {
+          font-size: 16px;
+          line-height: 19px;
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
+#checkout {
+  #search_widget {
+    display: none; /* Not ideal solution by allows to reuse same hooks/templates */
+  }
+}
+
+#pagenotfound {
+  .page-content {
+    #search_widget {
+      width: 100%;
+    }
+  }
+}
+
+.page-not-found {
+  #_desktop_seach_widget {
+    float: none;
+    padding: 0;
+    position: unset;
+  }
+  .search-widget {
+    position: relative;
+    padding: 0;
+    .search-logo {
+        display: none;
+    }
+    form {
+      display: inline-block;
+      top: 0;
+      position: relative;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.ajaxishi-search {
+  position: absolute;
+  top: 29px;
+  left: 0;
+  right: 0;
+  height: auto;
+  padding-top: 15px;
+  max-height: 383px;
+  overflow-y: scroll;
+  scrollbar-width: thin;  
+  background: #ffffff;
+  box-shadow: 0 0px 2px 0px rgba(0, 0, 0, .1);
+  ul {
+    margin: 0;
+    li {
+      text-decoration: none;
+      list-style: none;
+      &:last-child {
+        > div {
+          border-bottom: 0;
+        }
+      }
+      > div {
+        display: block;
+        position: relative;
+        overflow: hidden;
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+        a {
+          display: block;
+          position: relative;
+          overflow: hidden;
+        }
+        .product-image {
+          float: left;
+          margin-right: 12px;
+          border: 1px solid #eeeeee;
+        }   
+        .product-desc {
+          text-align: left;
+          .product-name {
+            margin-bottom: 5px;
+            color: $brand-primary;
+          }
+          .product-price {
+            .special {
+              color:#888;
+              text-decoration: line-through;
+              display: inline-block;
+              vertical-align: middle;
+              margin-right: 8px;
+            }
+            .price {
+              color: $brand-primary;
+              display: inline-block;
+              vertical-align: middle;
+            }
+          }
+        }
+      }
+    }
+  }
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #cdcdcd;
+    border: 1px solid #f0f0f0;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: #f0f0f0;
+  }
+}

@@ -1,0 +1,136 @@
+.owl-carousel{
+	.owl-nav {
+		position: absolute;
+		right: 10px;
+		top: -43.2px;
+		text-align: center;
+		-webkit-transition: all 0.4s;
+		-moz-transition: all 0.4s;
+		-o-transition: all 0.4s;
+		transition: all 0.4s;
+		@media (max-width: 543px) {
+			position: unset;
+			margin-top: 10px;
+		}
+		.owl-prev, .owl-next {
+			@media (max-width: 543px) {
+				/* If media is below 768 */
+				position: relative;
+				display: inline-block;
+				vertical-align: middle;
+			}
+			text-align: center;
+			margin: 0 auto;
+			margin: 3px;
+			display: inline-block;
+			vertical-align: middle;
+			background-color: #f6f6f6;
+			border: 1px solid #f6f6f6;
+			padding: 2px;
+			width: 30px;
+			height: 30px;
+			overflow: hidden;
+			outline: none;
+			-webkit-transition: all 0.3s ease-in-out;
+			-moz-transition: all 0.3s ease-in-out;
+			-o-transition: all 0.3s ease-in-out;
+			transition: all 0.3s ease-in-out;
+			&:hover {
+				border-color:$brand-secondary;
+				background: $brand-secondary;
+				i{
+					&:before{
+						color: $light-color;
+					}
+				}	
+			}
+		}
+		i{
+			&:before {
+				font-size: 16px;
+				line-height: 22px;
+				color: #7c7c7c;
+				position: relative;
+				text-align: center;
+				font-weight: 600;
+				margin: 0 auto;
+			}
+		}
+	}
+	.owl-dots {
+		position: absolute;
+		bottom: 15px;
+		right: 0;
+		left: 0;
+		margin: 0 auto;
+		text-align: center;
+		-webkit-transition: all 0.3s;
+		-moz-transition: all 0.3s;
+		-o-transition: all 0.3s;
+		transition: all 0.3s;
+		.owl-dot {
+			display: inline-block;
+			vertical-align: middle;
+			outline: none;
+			span {
+				width: 12px;
+				height: 12px;
+				border-radius: 50px;
+				background: $brand-secondary;
+				border: 1px solid $brand-secondary;
+				margin: 0 5px;
+				display: block;
+			}
+			&.active {
+				span {
+					background: $brand-primary;
+					border-color: $brand-primary;
+				}
+			}
+		}
+		&.ishi-style-dot1 {
+			.owl-dot {
+				span {
+					border-radius: 0;
+				}
+			}
+		}
+		&.ishi-style-dot2 {
+			.owl-dot {
+				span {
+					border-radius: 50%;
+				}
+			}
+		}
+		&.ishi-style-dot3 {
+			.owl-dot {
+				span {
+					border-radius: 0;
+					transform: rotate(45deg);
+					-ms-transform: rotate(45deg);
+					-webkit-transform: rotate(45deg);
+					-o-transform: rotate(45deg);
+					-moz-transform: rotate(45deg);
+				}
+			}
+		}
+		&.ishi-style-dot4 {
+			.owl-dot {
+				span {
+					width: 25px;
+					height: 5px;
+					border-radius: 0;
+				}
+			}
+		}
+		&.ishi-style-dot5 {
+			.owl-dot {
+				span {
+					width: 25px;
+					height: 6px;
+					border-radius: 5px;
+				}
+			}
+		}
+	}
+}

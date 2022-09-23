@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<!--[if IE 8 ]><html dir="{{ direction }}" lang="{{ lang }}" class="ie8"><![endif]-->
+<!--[if IE 9 ]><html dir="{{ direction }}" lang="{{ lang }}" class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html dir="{{ direction }}" lang="{{ lang }}">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>{{ title }}</title>
+<base href="{{ base }}" />
+{% if description %}
+<meta name="description" content="{{ description }}" />
+{% endif %}
+{% if keywords %}
+<meta name="keywords" content="{{ keywords }}" />
+{% endif %}
+<script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
+<link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+<script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/magnific/magnific-popup.css" />
+<link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
+<link href="catalog/view/theme/{{ activetemplate }}/stylesheet/owl.carousel.min.css" rel="stylesheet">
+<script src="catalog/view/theme/{{ activetemplate }}/javascripts/owl.carousel.min.js" type="text/javascript"></script>
+<script src="catalog/view/theme/{{ activetemplate }}/javascripts/theme.js" type="text/javascript"></script>
+<link href="catalog/view/theme/{{ activetemplate }}/stylesheet/stylesheet.css" rel="stylesheet">
+
+
+{% if direction == 'rtl' %}
+  
+<link href="catalog/view/theme/{{ activetemplate }}/stylesheet/rtl.css" rel="stylesheet">
+{% endif %}
+
+{% for style in styles %}
+<link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}" />
+{% endfor %}
+{% for script in scripts %}
+<script src="{{ script }}" type="text/javascript"></script>
+{% endfor %}
+<script src="catalog/view/javascript/common.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/support.js" type="text/javascript"></script>
+<link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<script src="catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js"></script>
+<script src="catalog/view/javascript/jquery/datetimepicker/moment/moment.min.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/jquery/datetimepicker/moment/moment-with-locales.min.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+{% for link in links %}
+<link href="{{ link.href }}" rel="{{ link.rel }}" />
+{% endfor %}
+{% for analytic in analytics %}
+{{ analytic }}
+{% endfor %}
+</head>
+<body>
+  <main class="{{ ishihomepage }}"> 
+  	<div id="menu_wrapper"></div>
+    <header id="header">
+    
+		<div class="header-top-height">
+			<div class="header-top">
+				<div class="container">
+					<div class="row">
+								<div class="mobile-width-left col-sm-4 col-xs-4"> 
+									<div id="menu-icon" class="menu-icon hidden-md hidden-lg">
+								    	<div class="nav-icon">
+									        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+										        <symbol id="menu" viewBox="0 0 750 750"><title>menu</title>
+										            <path d="M12.03,84.212h360.909c6.641,0,12.03-5.39,12.03-12.03c0-6.641-5.39-12.03-12.03-12.03H12.03
+										            C5.39,60.152,0,65.541,0,72.182C0,78.823,5.39,84.212,12.03,84.212z"></path>
+										            <path d="M372.939,180.455H12.03c-6.641,0-12.03,5.39-12.03,12.03s5.39,12.03,12.03,12.03h360.909c6.641,0,12.03-5.39,12.03-12.03
+										                S379.58,180.455,372.939,180.455z"></path>
+										            <path d="M372.939,300.758H12.03c-6.641,0-12.03,5.39-12.03,12.03c0,6.641,5.39,12.03,12.03,12.03h360.909
+										            c6.641,0,12.03-5.39,12.03-12.03C384.97,306.147,379.58,300.758,372.939,300.758z"></path>
+										        </symbol>
+										    </svg>
+										    <svg class="icon" viewBox="0 0 30 30"><use xlink:href="#menu" x="22%" y="25%"></use></svg>
+										</div>    
+								  	</div> 
+									<div id="_mobile_seach_widget"></div>
+								</div>  	
+				        <div class="desktop-logo col-lg-4 col-md-4 col-sm-6 col-xs-6">
+				          <div id="logo">
+				            {% if logo %}
+				            <a href="{{ home }}"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-responsive" /></a>
+				            {% else %}
+				            <span style="font-size: 20px;line-height: 20px;">
+				              <a href="{{ home }}">
+				                {{ name }}
+				              </a>
+				            </span>
+				            {% endif %}
+				          </div>
+				        </div><div class="mobile-width-right col-sm-4 col-xs-4">
+			            <div id="_mobile_cart"></div>
+							<div id="_mobile_link_menu"></div>
+		            	</div>
+								<div id="_desktop_seach_widget" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				            <div id="ishisearch_widget" class="search-widget dropdown">
+					              <div class="search-logo hidden-lg hidden-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+								  		<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">   
+					                    <symbol id="magnifying-desktop" viewBox="0 0 1200 1200"><title>magnifying-desktop</title>
+					                      <path d="M606.209,578.714L448.198,423.228C489.576,378.272,515,318.817,515,253.393C514.98,113.439,399.704,0,257.493,0
+					                           C115.282,0,0.006,113.439,0.006,253.393s115.276,253.393,257.487,253.393c61.445,0,117.801-21.253,162.068-56.586
+					                           l158.624,156.099c7.729,7.614,20.277,7.614,28.006,0C613.938,598.686,613.938,586.328,606.209,578.714z M257.493,467.8
+					                           c-120.326,0-217.869-95.993-217.869-214.407S137.167,38.986,257.493,38.986c120.327,0,217.869,95.993,217.869,214.407
+					                           S377.82,467.8,257.493,467.8z"></path>
+					                     </symbol>
+					                  </svg>
+					                  <svg class="icon" viewBox="0 0 40 40"><use xlink:href="#magnifying-desktop" x="20%" y="22%"></use></svg>
+							  		</div>
+			              			<form class="dropdown-menu">{{ search }}</form>
+				            </div>
+	        			</div> 
+	        			<div class="header-right col-lg-4 col-md-4 col-sm-6 col-xs-6">
+	        				<div id="_desktop-contactinfo">
+					          <div class="contact-num">
+					            <a href="{{ contact }}">
+												<div class="call-img">
+												  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">          
+												    <symbol id="email" viewBox="0 0 600 600"><title>email</title>
+												      <path d="M467,61H45C20.218,61,0,81.196,0,106v300c0,24.72,20.128,45,45,45h422c24.72,0,45-20.128,45-45V106
+															C512,81.28,491.872,61,467,61z M460.786,91L256.954,294.833L51.359,91H460.786z M30,399.788V112.069l144.479,143.24L30,399.788z
+															 M51.213,421l144.57-144.57l50.657,50.222c5.864,5.814,15.327,5.795,21.167-0.046L317,277.213L460.787,421H51.213z M482,399.787
+															L338.213,256L482,112.212V399.787z"></path>
+												    </symbol>
+												  </svg>
+												  <svg class="icon" viewBox="0 0 40 40"><use xlink:href="#email" x="6%" y="8%"></use></svg>
+												</div>
+												<div class="call">
+													<div class="call-us">{{ text_email }}</div>
+													<a href="mailto:{{ email }}" class="call-num">{{ email }}</a>
+												</div>
+											</a>
+					          </div> 
+				        	</div> 
+					        <div id="_desktop_cart">
+					          <div class="blockcart">
+					            {{ cart }}
+					          </div>
+					        </div> 
+	        			</div>
+					</div>
+				</div>
+			</div>  
+		</div>
+	      <div class="nav-full-width {{ ishome }}">
+	        <div class="container">
+	          <div class="row"> 
+	            {{ menu }}  
+        		{{ headerafter }}            
+	          </div>
+	        </div>
+	      </div>
+    </header>
+    
+    <div id="spin-wrapper"></div>
+	<div id="siteloader">
+		{% if loader == 'loader_1' %}
+		<div class="loader loader-1"></div>
+		{% elseif loader == 'loader_2' %}
+		<div class="loader loader-2">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		{% elseif loader == 'loader_3' %}
+		<div class="loader loader-3">
+	      <div></div>
+	      <div></div>
+	      <div></div>
+	  	</div>
+		{% else %}
+		<div class="loader loader-4 la-dark la-2x">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		{% endif %}
+	</div>
+
+<!-- ======= Quick view JS ========= -->
+<script> 
+function quickbox(){
+ 	if ($(window).width() > 767) {
+		$('.quickview-button').magnificPopup({
+		type:'iframe',
+		delegate: 'a',
+		preloader: true,
+		tLoading: 'Loading image #%curr%...',
+		});    
+ 	}  
+}
+jQuery(document).ready(function() {quickbox();});
+jQuery(window).resize(function() {quickbox();});
+$( "input[name=\'search\']" ).keyup(function( event ) {
+	$('input[name=\'search\']').autocomplete({
+		'source': function(request, response) {
+			$.ajax({
+				url: 'index.php?route=product/search/autocomplete&filter_name=' +  encodeURIComponent(request),
+				dataType: 'json',
+				success: function(result) {
+					var products = result.products;
+					$('.ajaxishi-search ul li').remove();
+					  $.each(products, function(index,product) {
+						var html = '<li>';
+							html += '<div>';
+							html += '<a href="' + product.url + '" title="' + product.name + '">';
+							html += '<div class="product-image"><img alt="' + product.name + '" src="' + product.image + '"></div>';
+							html += '<div class="product-desc">';
+							html += '<div class="product-name">' + product.name + '</div>';
+							if (product.special) {
+	                            html += '<div class="product-price"><span class="special">' + product.price + '</span><span class="price">' + product.special + '</span></div>';
+	                        } else {
+	                            html += '<div class="product-price"><span class="price">' + product.price + '</span></div>';
+							}
+							html += '</div>';
+							html += '</a>';
+							html += '</div>';
+							html += '</li>';
+							$('.ajaxishi-search ul').append(html);
+					  });
+					  $('.ajaxishi-search').css('display','block');
+	                return false;
+				}
+			});
+		},
+		'select': function(product) {
+			$('input[name=\'filter_name\']').val(product.name);
+		}
+	});
+});
+</script>

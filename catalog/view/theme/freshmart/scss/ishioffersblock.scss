@@ -1,0 +1,55 @@
+#ishioffersblock {
+	float: right;
+	width: 24%;
+	background:$brand-third;
+	padding: 4px 5px;
+	overflow: hidden;
+	position: absolute;
+	right: 0;
+	top: -7px;
+	cursor: pointer;
+	border-radius: 45px 0 0 45px;
+	@media screen and (min-width: 1200px) and (max-width: 1400px) {
+		width: 30%;
+	}
+	@media (max-width: 1199px) {
+		width: 35%;
+	}
+
+	@media (max-width: 991px) {
+		display: none;
+	}
+
+	.offer-title {
+		font-size: 14px;
+		font-weight: 500;
+		text-align: center;
+		margin-right: 15px;
+		display: inline-block;
+		vertical-align: middle;
+		background: $brand-secondary;
+		color: $light-color;
+		text-transform: uppercase;
+		border-radius: 50%;
+		padding: 11px 8px;
+
+		span {
+			display: block;
+			color: $light-color;
+		}
+	}
+
+	#typed-strings {
+		display: inline-block;
+		vertical-align: middle;
+		color: $brand-primary;
+
+		p {
+			color: $brand-primary;
+		}
+	}
+
+	span {
+		color: $light-color;
+	}
+}

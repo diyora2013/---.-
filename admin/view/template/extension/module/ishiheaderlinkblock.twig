@@ -1,0 +1,114 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+        <button type="submit" form="form-footerlink" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+        <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    {% if error_warning %}
+    <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_edit }}</h3>
+      </div>
+      <div class="panel-body">
+        <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-footerlink" class="form-horizontal">
+			<div class="form-group required">
+				<label class="col-sm-2 control-label" for="input-name">{{ entry_name }}</label>
+				<div class="col-sm-10">
+					<input type="text" name="name" value="{{ name }}" placeholder="{{ entry_name }}" id="input-name" class="form-control" />
+					{% if error_name %}
+						<div class="text-danger">{{ error_name }}</div>
+					{% endif %}
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
+				<div class="col-sm-10">
+					<select name="status" id="input-status" class="form-control">
+					{% if status %}
+						<option value="1" selected="selected">{{ text_enabled }}</option>
+						<option value="0">{{ text_disabled }}</option>
+					{% else %}
+						<option value="1">{{ text_enabled }}</option>
+						<option value="0" selected="selected">{{ text_disabled }}</option>
+					{% endif %}
+					</select>
+				</div>
+			</div>
+			<ul class="nav nav-tabs" id="language">
+            {% for language in languages %}
+            <li><a href="#language{{ language.language_id }}" data-toggle="tab"><img src="language/{{ language.code }}/{{ language.code }}.png" title="{{ language.name }}" /> {{ language.name }}</a></li>
+            {% endfor %}
+          </ul>
+          <div class="tab-content">
+            {% set extra_row = 0 %}
+            {% for language in languages %}
+            <div class="tab-pane" id="language{{ language.language_id }}">
+              <table id="extras{{ language.language_id }}" class="table table-striped table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <td class="text-left">{{ entry_title }}</td>
+                    <td class="text-left">{{ entry_link }}</td>
+                    <td></td>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% if extra_pages[language.language_id] %}
+                  {% for extra_page in extra_pages[language.language_id] %}
+                  <tr id="extra-row{{ extra_row }}">
+                    <td class="text-left"><input type="text" name="extra_page[{{ language.language_id }}][{{ extra_row }}][title]" value="{{ extra_page.title }}" placeholder="{{ entry_title }}" class="form-control" /></td>
+                    <td class="text-right" style="width: 60%;"><input type="text" name="extra_page[{{ language.language_id }}][{{ extra_row }}][link]" value="{{ extra_page.link }}" placeholder="{{ entry_sort_order }}" class="form-control" /></td>
+                    <td class="text-left"><button type="button" onclick="$('#extra-row{{ extra_row }}, .tooltip').remove();" data-toggle="tooltip" title="{{ button_remove }}" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
+                  </tr>
+                  {% set extra_row = extra_row + 1 %}
+                  {% endfor %}
+                  {% endif %}
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="2"></td>
+                    <td class="text-left"><button type="button" onclick="AddLink('{{ language.language_id }}');" data-toggle="tooltip" title="{{ button_page_add }}" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            {% endfor %}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+  <script type="text/javascript"><!--
+var extra_row = {{ extra_row }};
+
+function AddLink(language_id) {
+
+	html  = '<tr id="extra-row' + extra_row + '">';
+  html += '  <td class="text-left"><input type="text" name="extra_page[' + language_id + '][' + extra_row + '][title]" value="" placeholder="{{ entry_title }}" class="form-control" /></td>';
+	html += '  <td class="text-right" style="width: 60%;"><input type="text" name="extra_page[' + language_id + '][' + extra_row + '][link]" value="" placeholder="{{ entry_sort_order }}" class="form-control" /></td>';
+	html += '  <td class="text-left"><button type="button" onclick="$(\'#extra-row' + extra_row  + ', .tooltip\').remove();" data-toggle="tooltip" title="{{ button_remove }}" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
+	html += '</tr>';
+	
+	$('#extras' + language_id + ' tbody').append(html);
+	
+	extra_row++;
+}
+//--></script> 
+  <script type="text/javascript"><!--
+$('#language a:first').tab('show');
+//--></script>
+{{ footer }} 

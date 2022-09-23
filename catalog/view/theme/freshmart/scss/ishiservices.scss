@@ -1,0 +1,88 @@
+.ishiservicesblock {
+	display: block;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	margin: 0 auto;
+	margin-bottom: 30px;
+	.services{
+		text-align: center;
+		cursor: pointer;
+		&:nth-child(4n+1),
+		&:nth-child(4n+2) {
+			@media (max-width: 991px) {
+				/* If media is below 992 */
+				margin-bottom: 30px;
+			}
+		}
+		.service-bg {
+			background: #f6f6f6;
+			padding: 20px 0;
+			display: block;
+			position: relative;
+			overflow: hidden;
+			&:hover{
+				.service-img {
+					background-position: center -98px;
+				}
+				.service-block{
+					.service-title {
+						letter-spacing: 1.5px;
+						color: $brand-secondary;
+					}
+				}
+			}
+		}
+		.service-img{	
+			@media (max-width: 1199px) {
+				display: block;
+			}
+			background-repeat: no-repeat;
+			background-position: center -18px;
+			display: inline-block;
+			vertical-align: middle;
+			position: relative;
+			text-align: center;
+			margin: 0 auto;
+			height: 35px;
+			width: 35px;
+			transition: all 400ms ease;
+			-webkit-transition: all 400ms ease;
+			-moz-transition: all 400ms ease;
+			-ms-transition: all 400ms ease;
+			-o-transition: all 400ms ease;
+		}		
+		.service-block{
+			@media (max-width: 1199px) {
+				text-align: center;
+				padding-left: 0;
+				margin-top: 10px;
+				display: block;
+			}
+			display: inline-block;
+			vertical-align: middle;
+			text-align: left;
+			padding-left: 10px;
+			.service-title {
+				font-size: 14px;
+				font-weight: 500;
+				color: $brand-primary;
+				transition: all 400ms ease;
+				-webkit-transition: all 400ms ease;
+				-moz-transition: all 400ms ease;
+				-ms-transition: all 400ms ease;
+				-o-transition: all 400ms ease;
+				@media (max-width: 767px) {
+					margin-bottom:5px;
+				}
+			}
+			.service-desc {
+				display: block;
+				color: $black-color;
+				font-weight: 400;
+				font-size: 12px;
+				font-family: $primary-font;
+			}
+		}
+	}
+}

@@ -1,0 +1,64 @@
+<section class="smartblog_block clearfix">
+	<h3 class="home-title">{{ heading }}</h3>
+	<div id="smartblog-carousel" class="owl-carousel">
+		{% for blog in blogs %}			
+			<div class="blog_post item">
+				<div class="news_module_image_holder">
+					{% if blog.image %} 
+					<a href="{{ blog.href }}">
+						<img src="{{ blog.image }}" alt="{{ heading_title }}" title="{{ heading_title }}" class="img-responsive" />
+						<div class="blog-hover"></div>
+					</a>
+					<a class="blogicons icon readmore_link" title="Click to view Read More " href="{{ blog.href }}"><i class="fa fa-link"></i></a>
+					{% endif %}
+					<div class="date-comment">						
+						<div class="date-time"> 
+							<i class="fa fa-calendar" aria-hidden="true"></i>
+							<span class="day_date">{{ blog.date_added }}</span>
+						</div>
+						<div class="write-comment">
+							<i class="fa fa-comment" aria-hidden="true"></i> 
+							<a href="{{ blog.href }}"> {{ blog.total_comments }} {{ entry_comment }}</a> 
+						</div>
+					</div>
+				</div>
+				<div class="blog_content">
+					<h4 class="blog_title"><a href="{{ blog.href }}">{{ blog.title }}</a></h4>
+					<div class="blog-desc"> {{ blog.description }} </div>
+					<div class="view-blog">
+						<div class="read-more"><a href="{{ blog.href }}">{{ text_read_more }}</a></div> <i class="fa fa-long-arrow-right"></i>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+	<script type="text/javascript">
+		$('.smartblog_block .owl-carousel').owlCarousel({
+			loop:false,
+			nav:{{ navigation }},
+			dots:false,
+			rewind:true,
+			margin: 30,
+			rtl: $('html').attr('dir') == 'rtl'? true : false,
+			navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+			autoplay:false, 
+			responsive:{
+				0:{
+                	items:1
+				},
+				544:{
+					items:2
+				},
+				768:{
+					items:2
+				},
+				992:{
+					items:3
+				},
+				1200:{
+					items:4
+				}
+			}
+		});
+	</script>
+</section>

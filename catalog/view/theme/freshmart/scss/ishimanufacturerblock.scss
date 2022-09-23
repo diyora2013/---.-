@@ -1,0 +1,33 @@
+.manufacturerblock {
+	@media (max-width: 991px) {
+		margin-bottom:0;
+	}
+	.home-title{
+		@media (max-width: 991px) {
+			margin-bottom:15px;
+		}
+	}
+	.item {
+		text-align: center;
+		img {
+			opacity: 0.8;
+			max-width: 200px;
+			display: inline-block;
+		}
+		&:hover {
+			img {
+				opacity: 1;
+			}
+		}
+	}
+	.owl-nav {
+		right: 0;
+		top: -69px;
+		@media (max-width: 991px) {
+			top: -59px;
+		}
+		@media (max-width: 543px) {
+			margin-top:0;
+		}
+	}
+}

@@ -1,0 +1,21 @@
+<div id="ishioffersblock">
+	<div class="offer-title"> 
+		<span>%</span> {{ text_offer }}
+	</div>		
+	<div id="typed-strings">
+		{% for offer in offers %} 
+			<p>{{ offer.title }}</p>
+		{% endfor %}
+	</div>
+ 	<span id="typed"></span>
+	<script type="text/javascript">
+		var typed = new Typed('#typed', {
+	      stringsElement: '#typed-strings',
+	      typeSpeed: 90,
+	      backSpeed: 90,
+	      startDelay: 1000,
+	      showCursor: false,
+	      loop: true,
+	    });
+	</script>
+</div>

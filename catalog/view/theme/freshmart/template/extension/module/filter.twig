@@ -1,0 +1,46 @@
+<div class="filterbox">
+  <div class="page-title hidden-sm hidden-xs">{{ heading_title }}</div>
+  <div class="block-title clearfix  hidden-lg hidden-md collapsed" data-target="#filterbox-container" data-toggle="collapse">
+    <span class="page-title">{{ heading_title }}</span>
+    <span class="navbar-toggler collapse-icons">
+      <i class="fa fa-angle-down add"></i>
+      <i class="fa fa-angle-up remove"></i>
+    </span>
+  </div>
+  <div id="filterbox-container" class="collapse data-toggler">
+    <div class="list-group-filter"> 
+      {% for filter_group in filter_groups %} 
+      <a class="list-group-item group-name">{{ filter_group.name }}</a>
+      <div class="list-group-item">
+        <div id="filter-group{{ filter_group.filter_group_id }}">{% for filter in filter_group.filter %}
+          <div class="checkbox">
+            <label>{% if filter.filter_id in filter_category %}
+              <input type="checkbox" name="filter[]" value="{{ filter.filter_id }}" checked="checked" />
+              {{ filter.name }}
+              {% else %}
+              <input type="checkbox" name="filter[]" value="{{ filter.filter_id }}" />
+              {{ filter.name }}
+              {% endif %}
+            </label>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="panel-footer text-left">
+      <button type="button" id="button-filter" class="btn btn-primary">{{ button_filter }}</button>
+    </div>
+  </div>
+</div>
+<script type="text/javascript"><!--
+$('#button-filter').on('click', function() {
+	filter = [];
+
+	$('input[name^=\'filter\']:checked').each(function(element) {
+		filter.push(this.value);
+	});
+
+	location = '{{ action }}&filter=' + filter.join(',');
+});
+//--></script> 

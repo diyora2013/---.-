@@ -1,0 +1,1931 @@
+@import "permanentvariables";
+@import "temporaryvariables";
+* {
+  direction: rtl !important;
+}
+
+main {
+  text-align: right !important;
+}
+
+caption, th, td {
+  text-align: right;
+}
+
+ul, ol {
+    padding-right: 0;
+}
+
+.pull-xs-right, .pull-right {
+  float: left !important;
+}
+.pull-xs-left, .pull-left {
+	float: right !important;
+}
+.text-xs-right{
+  text-align: left!important;
+}
+.text-xs-left{
+  text-align: right!important;
+}
+.text-left {
+	text-align: right;
+}
+.text-right {
+	text-align: left;
+}
+.col-xs-1,
+.col-xs-2,
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-6,
+.col-xs-7,
+.col-xs-8,
+.col-xs-9,
+.col-xs-10,
+.col-xs-11,
+.col-xs-12,
+.col-sm-1,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-md-1,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-lg-1,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-xl-1,
+.col-xl-2,
+.col-xl-3,
+.col-xl-4,
+.col-xl-5,
+.col-xl-6,
+.col-xl-7,
+.col-xl-8,
+.col-xl-9,
+.col-xl-10,
+.col-xl-11,
+.col-xl-12 {
+	position: relative;
+	// Prevent columns from collapsing when empty
+	min-height: 1px;
+	// Inner gutter via padding
+	padding-left: ($grid-gutter-width / 2);
+	padding-right: ($grid-gutter-width / 2);
+	margin-left: 0;
+}
+
+// Extra small grid
+//
+// Grid classes for extra small devices like smartphones. No offset, push, or
+// pull classes are present here due to the size of the target.
+//
+// Note that `.col-xs-12` doesn't get floated on purpose—there's no need since
+// it's full-width.
+
+@media (min-width: 320px) {
+	.col-xs-1,
+	.col-xs-2,
+	.col-xs-3,
+	.col-xs-4,
+	.col-xs-5,
+	.col-xs-6,
+	.col-xs-7,
+	.col-xs-8,
+	.col-xs-9,
+	.col-xs-10,
+	.col-xs-11 {
+		float: right
+	}
+
+	.col-xs-1 {
+		width: percentage((1 / $grid-columns))
+	}
+	.col-xs-2{
+		width: percentage((2 / $grid-columns))
+	}
+	.col-xs-3{
+		width: percentage((3 / $grid-columns))
+	}
+	.col-xs-4{
+		width: percentage((4 / $grid-columns))
+	}
+	.col-xs-5{
+		width: percentage((5 / $grid-columns))
+	}
+	.col-xs-6{
+		width: percentage((6 / $grid-columns))
+	}
+	.col-xs-7{
+		width: percentage((7 / $grid-columns))
+	}
+	.col-xs-8{
+		width: percentage((8 / $grid-columns))
+	}
+	.col-xs-9{
+		width: percentage((9 / $grid-columns))
+	}
+	.col-xs-10{
+		width: percentage((10/ $grid-columns))
+	}
+	.col-xs-11{
+		width: percentage((11/ $grid-columns))
+	}
+	.col-xs-12{
+		width: 100%
+	}
+}
+
+// Small grid
+//
+// Columns, offsets, pushes, and pulls for the small device range, from phones
+// to tablets.
+//
+// Note that `.col-sm-12` doesn't get floated on purpose—there's no need since
+// it's full-width.
+
+@media (min-width: 768px) {
+
+	.col-sm-1,
+	.col-sm-2,
+	.col-sm-3,
+	.col-sm-4,
+	.col-sm-5,
+	.col-sm-6,
+	.col-sm-7,
+	.col-sm-8,
+	.col-sm-9,
+	.col-sm-10,
+	.col-sm-11{
+		float: right
+	}
+	.col-sm-1{
+		width: percentage((1 / $grid-columns))
+	}
+	.col-sm-2{
+		width: percentage((2 / $grid-columns))
+	}
+	.col-sm-3{
+		width: percentage((3 / $grid-columns))
+	}
+	.col-sm-4{
+		width: percentage((4 / $grid-columns))
+	}
+	.col-sm-5{
+		width: percentage((5 / $grid-columns))
+	}
+	.col-sm-6{
+		width: percentage((6 / $grid-columns))
+	}
+	.col-sm-7{
+		width: percentage((7 / $grid-columns))
+	}
+	.col-sm-8{
+		width: percentage((8 / $grid-columns))
+	}
+	.col-sm-9{
+		width: percentage((9 / $grid-columns))
+	}
+	.col-sm-10{
+		width: percentage((10/ $grid-columns))
+	}
+	.col-sm-11{
+		width: percentage((11/ $grid-columns))
+	}
+	.col-sm-12{
+		width: 100%
+	}
+
+	// Push and pull columns for source order changes
+	.col-sm-push-1{
+		right: percentage((1 / $grid-columns))
+	}
+	.col-sm-push-2{
+		right: percentage((2 / $grid-columns))
+	}
+	.col-sm-push-3{
+		right: percentage((3 / $grid-columns))
+	}
+	.col-sm-push-4{
+		right: percentage((4 / $grid-columns))
+	}
+	.col-sm-push-5{
+		right: percentage((5 / $grid-columns))
+	}
+	.col-sm-push-6{
+		right: percentage((6 / $grid-columns))
+	}
+	.col-sm-push-7{
+		right: percentage((7 / $grid-columns))
+	}
+	.col-sm-push-8{
+		right: percentage((8 / $grid-columns))
+	}
+	.col-sm-push-9{
+		right: percentage((9 / $grid-columns))
+	}
+	.col-sm-push-10{
+		right: percentage((10/ $grid-columns))
+	}
+	.col-sm-push-11{
+		right: percentage((11/ $grid-columns))
+	}
+
+	.col-sm-pull-1{
+		left: percentage((1 / $grid-columns))
+	}
+	.col-sm-pull-2{
+		left: percentage((2 / $grid-columns))
+	}
+	.col-sm-pull-3{
+		left: percentage((3 / $grid-columns))
+	}
+	.col-sm-pull-4{
+		left: percentage((4 / $grid-columns))
+	}
+	.col-sm-pull-5{
+		left: percentage((5 / $grid-columns))
+	}
+	.col-sm-pull-6{
+		left: percentage((6 / $grid-columns))
+	}
+	.col-sm-pull-7{
+		left: percentage((7 / $grid-columns))
+	}
+	.col-sm-pull-8{
+		left: percentage((8 / $grid-columns))
+	}
+	.col-sm-pull-9{
+		left: percentage((9 / $grid-columns))
+	}
+	.col-sm-pull-10{
+		left: percentage((10/ $grid-columns))
+	}
+	.col-sm-pull-11{
+		left: percentage((11/ $grid-columns))
+	}
+
+	// Offsets
+	.col-sm-offset-1{
+		margin-right: percentage((1 / $grid-columns))
+	}
+	.col-sm-offset-2{
+		margin-right: percentage((2 / $grid-columns))
+	}
+	.col-sm-offset-3{
+		margin-right: percentage((3 / $grid-columns))
+	}
+	.col-sm-offset-4{
+		margin-right: percentage((4 / $grid-columns))
+	}
+	.col-sm-offset-5{
+		margin-right: percentage((5 / $grid-columns))
+	}
+	.col-sm-offset-6{
+		margin-right: percentage((6 / $grid-columns))
+	}
+	.col-sm-offset-7{
+		margin-right: percentage((7 / $grid-columns))
+	}
+	.col-sm-offset-8{
+		margin-right: percentage((8 / $grid-columns))
+	}
+	.col-sm-offset-9{
+		margin-right: percentage((9 / $grid-columns))
+	}
+	.col-sm-offset-10{
+		margin-right: percentage((10/ $grid-columns))
+	}
+	.col-sm-offset-11{
+		margin-right: percentage((11/ $grid-columns))
+	}
+
+	.col-sm-offset-1,
+	.col-sm-offset-2,
+	.col-sm-offset-3,
+	.col-sm-offset-4,
+	.col-sm-offset-5,
+	.col-sm-offset-6,
+	.col-sm-offset-7,
+	.col-sm-offset-8,
+	.col-sm-offset-9,
+	.col-sm-offset-10,
+	.col-sm-offset-11{
+		margin-left: 0
+	}
+}
+
+// Medium grid
+//
+// Columns, offsets, pushes, and pulls for the desktop device range.
+//
+// Note that `.col-md-12` doesn't get floated on purpose—there's no need since
+// it's full-width.
+@media (min-width: 992px) {
+	.col-md-1,
+	.col-md-2,
+	.col-md-3,
+	.col-md-4,
+	.col-md-5,
+	.col-md-6,
+	.col-md-7,
+	.col-md-8,
+	.col-md-9,
+	.col-md-10,
+	.col-md-11{
+		float: right
+	}
+	.col-md-1 {
+		width: percentage((1 / $grid-columns))
+	}
+	.col-md-2 {
+		width: percentage((2 / $grid-columns))
+	}
+	.col-md-3 {
+		width: percentage((3 / $grid-columns))
+	}
+	.col-md-4 {
+		width: percentage((4 / $grid-columns))
+	}
+	.col-md-5 {
+		width: percentage((5 / $grid-columns))
+	}
+	.col-md-6 {
+		width: percentage((6 / $grid-columns))
+	}
+	.col-md-7 {
+		width: percentage((7 / $grid-columns))
+	}
+	.col-md-8 {
+		width: percentage((8 / $grid-columns))
+	}
+	.col-md-9 {
+		width: percentage((9 / $grid-columns))
+	}
+	.col-md-10 {
+		width: percentage((10/ $grid-columns))
+	}
+	.col-md-11 {
+		width: percentage((11/ $grid-columns))
+	}
+	.col-md-12 { 
+		width: 100%
+	}
+
+	// Push and pull columns for source order changes
+	.col-md-push-1 {
+		right: percentage((1 / $grid-columns))
+	}
+	.col-md-push-2 {
+		right: percentage((2 / $grid-columns))
+	}
+	.col-md-push-3 {
+		right: percentage((3 / $grid-columns))
+	}
+	.col-md-push-4 {
+		right: percentage((4 / $grid-columns))
+	}
+	.col-md-push-5 {
+		right: percentage((5 / $grid-columns))
+	}
+	.col-md-push-6 {
+		right: percentage((6 / $grid-columns))
+	}
+	.col-md-push-7 {
+		right: percentage((7 / $grid-columns))
+	}
+	.col-md-push-8 {
+		right: percentage((8 / $grid-columns))
+	}
+	.col-md-push-9 {
+		right: percentage((9 / $grid-columns))
+	}
+	.col-md-push-10 {
+		right: percentage((10/ $grid-columns))
+	}
+	.col-md-push-11 {
+		right: percentage((11/ $grid-columns))
+	}
+
+	.col-md-pull-1 {
+		left: percentage((1 / $grid-columns))
+	}
+	.col-md-pull-2 {
+		left: percentage((2 / $grid-columns))
+	}
+	.col-md-pull-3 {
+		left: percentage((3 / $grid-columns))
+	}
+	.col-md-pull-4 {
+		left: percentage((4 / $grid-columns))
+	}
+	.col-md-pull-5 {
+		left: percentage((5 / $grid-columns))
+	}
+	.col-md-pull-6 {
+		left: percentage((6 / $grid-columns))
+	}
+	.col-md-pull-7 {
+		left: percentage((7 / $grid-columns))
+	}
+	.col-md-pull-8 {
+		left: percentage((8 / $grid-columns))
+	}
+	.col-md-pull-9 {
+		left: percentage((9 / $grid-columns))
+	}
+	.col-md-pull-10 {
+		left: percentage((10/ $grid-columns))
+	}
+	.col-md-pull-11 {
+		left: percentage((11/ $grid-columns))
+	}
+
+	// Offsets
+	.col-md-offset-1 {
+		margin-right: percentage((1 / $grid-columns))
+	}
+	.col-md-offset-2 {
+		margin-right: percentage((2 / $grid-columns))
+	}
+	.col-md-offset-3 {
+		margin-right: percentage((3 / $grid-columns))
+	}
+	.col-md-offset-4 {
+		margin-right: percentage((4 / $grid-columns))
+	}
+	.col-md-offset-5 {
+		margin-right: percentage((5 / $grid-columns))
+	}
+	.col-md-offset-6 {
+		margin-right: percentage((6 / $grid-columns))
+	}
+	.col-md-offset-7 {
+		margin-right: percentage((7 / $grid-columns))
+	}
+	.col-md-offset-8 {
+		margin-right: percentage((8 / $grid-columns))
+	}
+	.col-md-offset-9 {
+		margin-right: percentage((9 / $grid-columns))
+	}
+	.col-md-offset-10 {
+		margin-right: percentage((10/ $grid-columns))
+	}
+	.col-md-offset-11 {
+		margin-right: percentage((11/ $grid-columns))
+	}
+
+	.col-md-offset-1,
+	.col-md-offset-2,
+	.col-md-offset-3,
+	.col-md-offset-4,
+	.col-md-offset-5,
+	.col-md-offset-6,
+	.col-md-offset-7,
+	.col-md-offset-8,
+	.col-md-offset-9,
+	.col-md-offset-10,
+	.col-md-offset-11{
+		margin-left: 0
+	}
+}
+
+// Large grid
+//
+// Columns, offsets, pushes, and pulls for the large desktop device range.
+//
+// Note that `.col-lg-12` doesn't get floated on purpose—there's no need since
+// it's full-width.
+
+@media (min-width: 1200px) {
+
+	.col-lg-1,
+	.col-lg-2,
+	.col-lg-3,
+	.col-lg-4,
+	.col-lg-5,
+	.col-lg-6,
+	.col-lg-7,
+	.col-lg-8,
+	.col-lg-9,
+	.col-lg-10,
+	.col-lg-11{
+		float: right
+	}
+
+	.col-lg-1 {
+		width: percentage((1 / $grid-columns))
+	}
+	.col-lg-2  {
+		width: percentage((2 / $grid-columns))
+	}
+	.col-lg-3  {
+		width: percentage((3 / $grid-columns))
+	}
+	.col-lg-4  {
+		width: percentage((4 / $grid-columns))
+	}
+	.col-lg-5  {
+		width: percentage((5 / $grid-columns))
+	}
+	.col-lg-6  {
+		width: percentage((6 / $grid-columns))
+	}
+	.col-lg-7  {
+		width: percentage((7 / $grid-columns))
+	}
+	.col-lg-8  {
+		width: percentage((8 / $grid-columns))
+	}
+	.col-lg-9  {
+		width: percentage((9 / $grid-columns))
+	}
+	.col-lg-10 {
+		width: percentage((10/ $grid-columns))
+	}
+	.col-lg-11 {
+		width: percentage((11/ $grid-columns))
+	}
+	.col-lg-12 {
+		width: 100%
+	}
+
+	// Push and pull columns for source order changes
+	.col-lg-push-1 {
+		right: percentage((1 / $grid-columns))
+	}
+	.col-lg-push-2 {
+		right: percentage((2 / $grid-columns))
+	}
+	.col-lg-push-3 {
+		right: percentage((3 / $grid-columns))
+	}
+	.col-lg-push-4 {
+		right: percentage((4 / $grid-columns))
+	}
+	.col-lg-push-5 {
+		right: percentage((5 / $grid-columns))
+	}
+	.col-lg-push-6 {
+		right: percentage((6 / $grid-columns))
+	}
+	.col-lg-push-7 {
+		right: percentage((7 / $grid-columns))
+	}
+	.col-lg-push-8 {
+		right: percentage((8 / $grid-columns))
+	}
+	.col-lg-push-9 {
+		right: percentage((9 / $grid-columns))
+	}
+	.col-lg-push-10 {
+		right: percentage((10/ $grid-columns))
+	}
+	.col-lg-push-11 {
+		right: percentage((11/ $grid-columns))
+	}
+
+	.col-lg-pull-1 {
+		left: percentage((1 / $grid-columns))
+	}
+	.col-lg-pull-2 {
+		left: percentage((2 / $grid-columns))
+	}
+	.col-lg-pull-3 {
+		left: percentage((3 / $grid-columns))
+	}
+	.col-lg-pull-4 {
+		left: percentage((4 / $grid-columns))
+	}
+	.col-lg-pull-5 {
+		left: percentage((5 / $grid-columns))
+	}
+	.col-lg-pull-6 {
+		left: percentage((6 / $grid-columns))
+	}
+	.col-lg-pull-7 {
+		left: percentage((7 / $grid-columns))
+	}
+	.col-lg-pull-8 {
+		left: percentage((8 / $grid-columns))
+	}
+	.col-lg-pull-9 {
+		left: percentage((9 / $grid-columns))
+	}
+	.col-lg-pull-10 {
+		left: percentage((10/ $grid-columns))
+	}
+	.col-lg-pull-11 {
+		left: percentage((11/ $grid-columns))
+	}
+
+	// Offsets
+	.col-lg-offset-1 {
+		margin-right: percentage((1 / $grid-columns))
+	}
+	.col-lg-offset-2 {
+		margin-right: percentage((2 / $grid-columns))
+	}
+	.col-lg-offset-3 {
+		margin-right: percentage((3 / $grid-columns))
+	}
+	.col-lg-offset-4 {
+		margin-right: percentage((4 / $grid-columns))
+	}
+	.col-lg-offset-5 {
+		margin-right: percentage((5 / $grid-columns))
+	}
+	.col-lg-offset-6 {
+		margin-right: percentage((6 / $grid-columns))
+	}
+	.col-lg-offset-7 {
+		margin-right: percentage((7 / $grid-columns))
+	}
+	.col-lg-offset-8 {
+		margin-right: percentage((8 / $grid-columns))
+	}
+	.col-lg-offset-9 {
+		margin-right: percentage((9 / $grid-columns))
+	}
+	.col-lg-offset-10 {
+		margin-right: percentage((10/ $grid-columns))
+	}
+	.col-lg-offset-11 {
+		margin-right: percentage((11/ $grid-columns))
+	}
+
+	.col-lg-offset-1,
+	.col-lg-offset-2,
+	.col-lg-offset-3,
+	.col-lg-offset-4,
+	.col-lg-offset-5,
+	.col-lg-offset-6,
+	.col-lg-offset-7,
+	.col-lg-offset-8,
+	.col-lg-offset-9,
+	.col-lg-offset-10,
+	.col-lg-offset-11 {
+		margin-left: 0
+	}
+}
+
+
+.dropdown-menu {
+	text-align: right;
+	float: right;
+}
+.input-group {
+	.form-control {
+		float: right;
+	}
+}
+.select-wrapper {
+	.form-control {
+		text-align: right;
+	}
+	&:after {
+		right: auto;
+		left: 10px;
+	}
+}
+.form-horizontal {
+	.control-label {
+		@media (min-width: 768px) {/* If media is above 767 */
+			text-align: right;
+		}
+	}
+}
+.checkbox , .radio {
+	label {
+		padding-right: 20px;
+		padding-left: 0;
+	}
+}
+.checkbox-inline, .radio-inline {
+	padding-right: 20px;
+	padding-left: 0;
+}
+.checkbox, .checkbox-inline, .radio, .radio-inline {
+	input[type="checkbox"], input[type="radio"] {
+		margin-right: -20px;
+		margin-left: 0;
+	}
+}
+
+.header-nav {
+	.left-nav {
+		text-align: right;
+		@media (max-width: 767px) {
+			text-align: center;
+		}
+	}
+	.right-nav {
+		text-align: left;
+		@media (max-width: 767px) {
+			text-align: center;
+		}
+		> div{
+			&:last-child{
+				padding-right:5px;
+				padding-left: 0;
+			}
+			&:after{
+				left: -3px;
+				right: auto;
+			}
+		}
+	}
+}
+.header-top {
+	.desktop-logo {
+	    @media (max-width: 991px) {
+	      width:38%;
+	      padding: 0;
+	    }
+		@media (max-width: 543px) {
+			/* If media is below 544 */
+			float: none;
+			text-align: center;
+			margin: 0 auto;
+		}
+		float: right;
+	}
+}
+.mobile-width-right,.mobile-width-left{
+  display: none;
+  @media (max-width: 991px) {
+    display: block;
+    width:31%;
+    float:right;
+    padding:5px 6px;
+  }
+}
+.mobile-width-right{
+  @media (max-width: 991px) {
+    float:left;
+  }
+}
+/* language and currency*/
+.currency-selector,
+.language-selector,
+.user-info {
+	.dropdown-menu {
+		left: -18px;
+		right: auto;
+	}
+	li {
+		a,
+		button {
+			text-align: right;
+		}
+	}
+}
+.currency-selector,
+.language-selector {
+	li {
+		.btn-link {
+			text-align: right;
+		}
+	}
+}
+.header-right{
+	text-align: left;
+}
+#_desktop-contactinfo {
+	padding: 0 10px;
+	@media (max-width: 991px) {
+		padding: 0 5px;
+	}
+	@media (max-width: 543px) {
+		float: none;
+		text-align: center;
+		margin: 0 auto;
+	}
+	.call-us{
+		direction: ltr !important;
+	}
+	.call {
+		padding-left: 0;
+		padding-right: 5px;
+		text-align: right;
+	}
+}
+
+#_desktop_cart {
+	@media (min-width: 992px) {
+		/* If media is below 991 */
+		float: left;
+	}
+}
+.blockcart {
+	text-align: right;
+	padding-left: 4px;
+	.cart-content {
+		text-align: right;
+		.cart-products-count {
+			text-align: right;
+			@media (max-width: 991px) {/* If media is below 768 */
+				right: auto;
+				left: 5px;
+				text-align: center;
+			}       
+		}
+	}
+	#cart {
+		.cart-dropdown, .dropdown-menu {
+			right: auto;
+			left: 0;
+			text-align: right;
+		}
+	}    
+}
+
+#menu-icon	{
+	float: right;
+}
+#_mobile_seach_widget{
+  float: right;
+}
+#_mobile_user_info,#_mobile_cart, #_mobile_link_menu {
+	float: left;
+}
+
+#mobile_top_menu_wrapper {
+	right: 0;
+	left: auto;
+	#top-menu {
+		> li {
+			text-align: right;
+			i {
+				float: left;
+				
+			}
+		}
+	}
+	.top-menu {
+		.sub-menu {
+			padding: 0 15px 0 0;
+			ul {
+				padding: 0 15px 0 0;
+			}
+		}
+		.navbar-toggler{
+			left: 0;
+			right: auto;
+		}
+	}
+	#top_menu_closer {
+		margin-left: 11px;
+		margin-right: 0;
+		text-align: left;
+	}
+}
+
+.search-widget {
+	@media (max-width: 991px) {
+		/* If media is below 992 */
+		float: left;
+	}
+	.searchboxform {
+		right: 0;
+		left: auto;
+	}
+	form {
+		@media (max-width: 991px) {
+			left: auto;
+			right: 0;
+		}
+		input[type="text"]{
+			padding-left: 100px;
+			padding-right: 10px;
+			@media (max-width: 1199px) {
+		        padding-left:65px;
+		      }
+		      @media (max-width: 991px) {/* If media is below 544 */
+		        padding-left:50px;
+		      }
+		}
+		.input-group-btn {
+			left: 0;
+			right: auto;
+		}
+		button {
+			left: 0;
+			right: auto;
+		}
+	}
+}
+.ajaxishi-search {
+	ul {
+		li {
+			>div {
+				.product-image {
+					float: right;
+					margin-left: 12px;
+					margin-right: 0;
+				}
+				.product-desc {
+					text-align: right;
+					.product-price {
+						.special {
+							margin-left: 8px;
+							margin-right: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* menu */
+#_desktop_top_menu {
+	float: right;
+	.home-title {
+		text-align: right;
+		&:after {
+			right: -11px;
+			left: auto;
+			border: 8px solid $rgba-titlecolor;
+			border-right: 11px solid transparent;
+			border-left: 0 solid transparent;
+			border-top: 0;
+		}
+	}
+}
+#top-menu {
+	>li {
+		text-align: right;
+		>a {
+			i {
+				float: left;
+				transform: rotate(180deg);
+			}
+		}
+		#_desktop_top_menu & {
+			.sub-menu {
+				right: 110%;
+				left: auto;
+				border-right: 2px solid $brand-secondary;
+				border-left: 0;
+				ul[data-depth="1"]>li {
+					float: right;
+					text-align: right;
+				}
+			}
+		}
+		&:hover {
+			#_desktop_top_menu & {
+				&:hover {
+					.sub-menu {
+						right: 100%;
+					}
+				}
+			}
+		}
+	}
+}
+.ishistoryblock{
+	.story-image{
+		.img-container{
+			@media (max-width: 767px) {
+				direction: ltr !important;
+			}
+		}
+	}
+}
+.ishislider {
+	float: left;
+	.owl-carousel{
+		.owl-nav{
+			.owl-prev{
+				&.ishi-style-nav3,&.ishi-style-nav5{
+					i{
+						&:before{
+							content: "\f104";
+						}
+					}
+				}
+			}
+			.owl-next{
+				&.ishi-style-nav3,&.ishi-style-nav5{
+					i{
+						&:before{
+							content: "\f105";
+						}
+					}
+				}
+			}
+		}
+	}
+}
+#ishioffersblock {
+	float: left;
+	left: 0;
+	right: auto;
+	cursor: pointer;
+	border-radius: 0 45px 45px 0;
+	.offer-title {
+		margin-left: 15px;
+		margin-right: 0;
+	}
+}
+#_desktop_link_menu {
+	@media (min-width: 992px) {
+		/* If media is above 1199 */
+		float: right;
+	}
+}
+#header_ishiheaderlinks {
+	@media (max-width: 991px) {
+		/* If media is below 992 */
+		float: left;
+	}
+	.bullet {
+		li {
+			.viewmore {
+				&:before {
+					left: 0;
+					right: auto;
+				}
+			}
+			.headerlink-dropdown {
+				left: 0;
+				right: auto;
+				text-align: right;
+			}
+		}
+		&.small {
+			@media (max-width: 1200px) {
+				/* If media is below 1200 */
+				right: 0;
+				left: auto;
+			}
+			@media (max-width: 991px) {
+				/* If media is below 992 */
+				left: 0;
+				right: auto;
+			}
+			li {
+				text-align: right;
+			}
+		}
+	}
+}
+.ishiservicesblock {
+	.services {
+		.service-block {
+			@media screen and (min-width: 768px) and (max-width: 1300px) {
+				text-align: center;
+				padding-right: 0;
+			}
+			@media (max-width: 767px) {
+				text-align:center;
+				padding:0;
+			}
+			text-align: right;
+			padding-right: 10px;
+			padding-left: 0;
+		}
+	}
+}
+.ishicategoryblock {
+	.panel {
+		.panel-heading {
+			a {
+				h2 {
+					margin-left: 10px;
+					margin-right: 0;
+					border-left: 1px solid #eee;
+					border-right: 0;
+				}
+			}
+		}
+	}
+	.ishicategory {
+		.image-container {
+			.text-container {
+				margin-right: 10px;
+				margin-left: 0;
+			}
+		}
+	}
+}
+.ishiproductsblock {
+	.owl-carousel{
+		.owl-nav {
+			left: 15px;
+			right: auto;
+		}
+	}
+}
+.ishispecialdeals {
+	.owl-carousel{
+		.owl-nav {
+			left: 15px;
+			right: auto;
+		}
+	}
+}
+.ishitestimonials {
+	.home-title {
+		&:before {
+			right: 10px;
+			left: auto;
+		}
+	}
+	.owl-carousel {
+		.owl-nav {
+			left: 10px;
+			right: auto;
+		}
+	}
+}
+.manufacturerblock {
+	.owl-carousel {
+		.owl-nav {
+			left: 0;
+			right: auto;
+		}
+	}
+}
+.ishipaymentblock {
+	text-align: left;
+	float: left;
+	@media (max-width: 991px) {
+		text-align: center;
+		float: none;
+	}
+}
+.block_newsletter {
+	@media (max-width: 991px) {
+		text-align: center;
+		margin: 0 auto;
+	}
+	@media (max-width: 767px) {
+		padding:28px 0 0;
+	}
+	#newsletter-container {
+		.newsletter_text {
+			.title_block {
+				padding-right: 10px;
+				padding-left: 0;
+				@media screen and (min-width: 992px) and (max-width: 1199px) {
+					padding-right: 0;
+				}
+				@media (max-width: 543px) {
+					padding-right:0;
+				}
+			}
+		}
+		.newsletter_form {
+			.btn-submit {
+				float: left;
+				right: auto;
+				left: 2px;
+			}
+			.text-email {
+				padding-left: 120px;
+				padding-right: 20px;
+				@media (max-width: 543px) {
+					padding-left:98px;
+				}
+			}
+		}
+	}
+}
+.ishistoreinfoblock {
+	padding: 0;
+	@media (max-width: 543px) {
+		width: 100%;
+	}
+	.ishistoreinfo-inner {
+		@media (min-width: 992px) {
+			-webkit-clip-path: polygon(0 0, 57% 0, 100% 100%, 0% 100%);
+			clip-path: polygon(27% 0, 100% 0, 100% 100%, 0% 100%);
+		}
+		&:after {
+			left: -80px;
+			right: auto;
+			@media (max-width: 1450px) {
+				left: -70px;
+			}
+			@media (max-width: 1199px) {
+				left: -60px;
+			}
+		}
+		.store-logo {
+			right: 25px;
+			left: auto;
+			@media (max-width: 991px) {
+				right: 0;
+			}
+		}
+	}
+}
+/* Smart Blog */
+.smartblog_block {
+	.blog_post {
+		.news_module_image_holder {
+			.date-comment {
+				.date-time {
+					margin-left: 4px;
+					margin-right: 0;
+					i {
+						padding-left: 2px;
+						padding-right: 0;
+					}
+				}
+			}
+		}
+	}
+	.owl-carousel {
+		.owl-nav {
+			left: 0;
+			right: auto;
+		}
+	}
+}
+.all-blog {
+	.sdsarticleCat {
+		@media (min-width: 992px) {
+			/* If media is above 991 */
+			text-align: right;
+		}
+	}
+}
+.single-blog {
+	#add-comment {
+		.form-horizontal {
+			.control-label {
+				text-align: right;
+			}
+		}
+	}
+
+	.smartblogcomments {
+		.view-comment {
+			text-align: right;
+
+			.user_list {
+				text-align: right;
+				margin-right: 10px;
+				margin-left: 0;
+			}
+		}
+	}
+
+}
+/* Smart Blog End */
+
+.home-title {
+	text-align: right;
+	padding-right: 22px;
+	padding-left: 0;
+	@media (max-width: 543px) {
+		text-align: center;
+		padding-right: 0;
+	}
+	&:before {
+		right: 0;
+		left: auto;
+	}
+}
+/* footer */
+#footer {
+	#slidetop {
+		left: 20px;
+		right: auto;
+	}
+	.block-social {
+		text-align: right;
+		@media (max-width: 991px) {
+			text-align: center;
+		}
+		@media (max-width: 543px) {
+			text-align: center;
+		}
+	}
+	.footer-left {
+		.information,
+		.account,
+		.extras,
+		.services {
+			#information-container,
+			#account-container,
+			#extras-container,
+			#services-container {
+				&:after {
+					left: 50px;
+					right: auto;
+					@media (max-width: 1350px) {
+						left: 30px;
+					}
+					@media (max-width: 1250px) {
+						left: 15px;
+					}
+				}
+			}
+		}
+	}
+
+	.information {
+		padding-right: 65px;
+		padding-left: 0;
+		@media (max-width: 1199px) {
+			padding-right: 35px;
+		}
+		@media (max-width: 991px) {
+			width: 100%;
+			padding: 0 15px 0;
+		}
+	}
+	.footer-title {
+		.navbar-toggler {
+			left: 0;
+			right: auto;
+		}
+	}
+}
+.footer-after {
+	.footer-aftertext {
+		text-align: right;
+		@media (max-width: 992px) {
+			/* If media is above 991 */
+			text-align: center;
+		}
+	}
+}
+#contact-info-container {
+	.block {
+		.icon {
+			float: right;
+			margin-left: 20px;
+			margin-right: 0;
+			@media (max-width: 1500px) {
+				margin-left: 10px;
+			}
+			@media (max-width: 991px) {
+				float: none;
+				display: block;
+				margin: 0 auto;
+			}
+			@media (max-width: 543px) {
+				margin: 0 auto 8px;
+			}
+		}
+	}
+}
+#column-left, #column-right {
+	.block-title {
+		.h3 {
+			text-align: right;
+		}
+		.navbar-toggler {
+			left: 15px;
+			right: auto;
+		}
+	}
+	section {
+		&.featured-products {
+			.home-title {
+				&:before {
+					right: 10px;
+					left: auto;
+				}
+			}
+		}
+	}
+	.ishibannerblock {
+		.bannerblock {
+			float: none;
+			margin: 0;
+			.image-container {
+				text-align: center;
+			}
+			a {
+				display: block;
+				@media (max-width: 991px) {
+					/* If media is below 992 */
+					display: inline-block;
+				}
+			}
+		}
+	}
+	.page-title {
+		text-align: right;
+	}
+	.box {
+		ul,
+		.category-top-menu {
+			.navbar-toggler {
+				left: 15px;
+				right: auto;
+			}
+		}
+	}
+
+	.product-thumb {
+		padding: 10px;
+		margin: 0;
+		border: 0;
+	}
+}
+.product-thumb {
+	.rating {
+		span {
+			&.fa-stack {
+				margin-left: 3px;
+				margin-right: 0;
+			}
+		}
+	}
+	.button-group {
+		left: 5px;
+		right: auto;
+		.btn-quickview,.btn-cart,.btn-wishlist,.btn-compare{
+			@media (min-width: 544px) {
+        	/* If media is above 544 */
+		        opacity: 0;
+		        -moz-transform: translateX(-20px);
+		        -webkit-transform: translateX(-20px);
+		        -o-transform: translateX(-20px);
+		        -ms-transform: translateX(-20px);
+		        -webkit-transition: all .3s;
+		        -moz-transition: all .3s;
+		        -o-transition: all .3s;
+		        transition: all .3s;
+		      }
+		}
+		.btn-quickview {
+      -webkit-transition: all .2s;
+      -moz-transition: all .2s;
+      -o-transition: all .2s;
+      transition: all .2s;
+    }
+    .btn-wishlist {
+      -webkit-transition: all .4s;
+      -moz-transition: all .4s;
+      -o-transition: all .4s;
+      transition: all .4s;
+    }
+    .btn-compare {
+      -webkit-transition: all .6s;
+      -moz-transition: all .6s;
+      -o-transition: all .6s;
+      transition: all .6s;
+    }
+    .btn-cart {
+      -webkit-transition: all .8s;
+      -moz-transition: all .8s;
+      -o-transition: all .8s;
+      transition: all .8s;
+    }
+	}
+	.outstock-overlay{
+		right: 10px;
+		left: auto;
+	}
+}
+.refine-search{
+	.category-list{
+		ul{
+			li{
+				float: right;
+				&.item{
+					&:nth-child(4n+1) {
+			            clear: none;
+			          }
+					&:nth-child(4n+1) {
+			            clear: right;
+			          }
+			          @media (max-width: 767px) {/* If media is below 768 */
+			            &:nth-child(4n+1) {
+			              clear: none;
+			            }
+			            &:nth-child(3n+1) {
+			              clear: none;
+			            }
+			            &:nth-child(3n+1) {
+			              clear: right;
+			            }
+			          }
+			          @media (max-width: 420px) {/* If media s below 420 */
+			            &:nth-child(3n+1) {
+			              clear: none;
+			            }
+			            &:nth-child(2n+1) {
+			              clear: none;
+			            }
+			            &:nth-child(2n+1) {
+			              clear: right;
+			            }
+			          }
+				}
+			}
+		}
+	}
+}
+.product-grid {
+	padding: 15px;
+	@media (max-width: 767px) {
+		/* If media is below 768 */
+		width: 50%;
+	}
+	@media (max-width: 543px) {
+		/* If media is below 768 */
+		padding: 5px 5px;
+	}
+	.product-thumb {
+		margin: 0;
+	}
+
+	&:nth-child(4n+1) {
+		clear: right;
+	}
+
+	@media (max-width: 1199px) {
+
+		/* If media is below 1200 */
+		&:nth-child(3n+1) {
+			clear: none;
+		}
+
+		&:nth-child(2n+1) {
+			clear: right;
+		}
+	}
+
+	@media (max-width: 991px) {
+
+		/* If media is below 992 */
+		&:nth-child(3n+1) {
+			clear: none;
+		}
+
+		&:nth-child(2n+1) {
+			clear: right;
+		}
+	}
+
+	@media (max-width: 767px) {
+
+		/* If media is below 768 */
+		&:nth-child(3n+1) {
+			clear: none;
+		}
+
+		&:nth-child(2n+1) {
+			clear: left;
+		}
+	}
+}
+.product-list {
+	padding: 0;
+	@media (max-width: 543px) {
+		/* If media is below 544 */
+		margin: auto;
+		width: 300px;
+		float: none;
+	}
+	.product-thumb {
+		text-align: right;
+		@media (max-width: 543px) {
+			/* If media is below 544 */
+			text-align: center;
+		}
+		.image {
+			@media (max-width: 767px) {
+				/* If media is below 768 */
+				width: 50%;
+				float: right;
+			}
+			@media (max-width: 543px) {
+				width: 100%;
+			}
+		}
+		.caption {
+			text-align: right;
+			padding: 6px 15px;
+			padding-left: 0;
+			@media (max-width: 767px) {
+				/* If media is below 768 */
+				width: 50%;
+			}
+			@media (max-width: 543px) {
+				width: 100%;
+				margin: 0;
+				text-align: center;
+				padding:10px 0 0;	
+			}
+		}
+	}
+}
+.product-list-top {
+	.btn-list-grid {
+		margin-right: 15px;
+		margin-left: 0;
+	}
+	.pagination-right {
+		@media (max-width: 767px) {/* If media is below 768 */
+	       	float: none;	       
+			margin-right: 15px;
+			margin-left: 0;
+	    }
+		float: left;
+		.sort-by-wrapper, .show-wrapper {
+			float: right;
+			margin-left: 15px;
+			margin-right: 0;
+		}
+		.show-wrapper {			
+		    @media (max-width: 465px) {/* If media is below 544 */
+				margin: 10px 0 0;
+			}
+		}
+		.sort-by {
+			float: right;
+			margin: 3px 0 0 10px;
+		}
+		.show {
+			@media (max-width: 543px) {/* If media is below 544 */
+				margin: 2px 0 0 10px;
+			}
+    		float: right;
+    	}
+    	.limit {
+    		float: right;
+    	}
+		.select-wrapper {
+			.form-control {
+				text-align: right;
+			}
+			&:after {
+				right: auto;
+				left: 10px;
+			}
+		}	
+	}
+}
+.product-image {
+	.image_show {
+		#slider_carousel {
+			.owl-nav {
+				.owl-prev{
+					i{
+						&:before{
+							content: "\f104";
+						}
+					}
+				}
+				.owl-next {
+					i{
+						&:before{
+							content: "\f105";
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.product-right {
+	position: sticky;
+	.rating-wrapper {
+		span {
+			&.fa-stack {
+				margin-left: 3px;
+				margin-right: 0;
+			}
+		}
+	}
+	.countdown-container {
+		margin: 0 auto;
+		margin-right: 0;
+	}
+	.list-unstyled {
+		&.attr {
+			li {
+				float: right;
+				border: 1px solid #eee;
+				margin-left: 15px;
+				margin-right: 0;
+				&:nth-child(3n+2),
+				&:nth-child(4n+4) {
+					margin-left: 0;
+				}
+			}
+		}
+	}
+	
+	.form-group {
+		.control-label {
+			float: right;
+			margin: 8px 0px 8px 8px;
+		}
+		#input-quantity {
+			margin-left: 6px;
+			margin-right: 0;
+			float: right;
+		}
+	}
+	.product_option {
+		@media (min-width: 544px) {
+			/* If media is above 543 */
+			&:nth-child(2n+1) {
+				clear: left;
+			}
+		}
+	}
+}
+#product-product {
+	.related-product {
+		.owl-nav {
+			left: 0;
+			right: auto;
+		}
+	}
+}
+.quickview {
+	.quickview-container {
+		.productpage-quickview {
+			.product-left {
+				float: right;
+			}
+			.product-right {
+				float: left;
+			}
+		}
+	}
+}
+.tabs_info {
+	.tab-content {
+		text-align: right;
+	}
+	.panel-heading {
+		a {
+			&:after {
+				float: left;
+			}
+		}
+	}
+}
+.addthis_toolbox {
+	a {
+		&.addthis_button_facebook_like, &.addthis_button_facebook_send, &.addthis_button_facebook_share, &.addthis_button_foursquare, &.addthis_button_google_plusone, &.addthis_button_linkedin_counter, &.addthis_button_pinterest_pinit, &.addthis_button_stumbleupon_badge, &.addthis_button_tweet {
+    		float: right;
+    	}
+    }
+}
+.addthis_counter {
+	&.addthis_pill_style {
+		a {
+			&.addthis_button_expanded {
+				float: right !important;
+				margin: 0 3px 0 0 !important;
+				padding: 0 4px 0 0 !important;
+			}
+			&.atc_s {
+				float: right !important;
+				padding: 0 20px 0 5px;
+			}
+		}
+	}
+}
+#at15s {
+	text-align: right !important;
+	.at-label {
+	    margin-right: 5px;
+	    margin-left: 0;
+	}
+}
+
+/* Checkout Cart */
+#checkout-cart {
+	.sub-total-table {
+		table-bordered {
+			> tbody {
+				> tr {
+					> td {
+						&.total-amount {
+							text-align: right;
+						}
+					}
+				}
+			}
+		}
+	}
+	#accordion {
+		.panel-heading {
+			a {
+				i {
+	    			float: left;
+	    		}
+	    	}
+	    }
+	    .control-label {
+	    	text-align: right;
+	    }
+	}
+}
+#checkout-checkout {
+	#accordion {
+		.panel-default {
+			.panel-heading {
+				.panel-title {
+					a {
+						i {
+							float: left;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* Contact */
+#information-contact {
+	.contact-location {
+		.location-title {
+			i {
+				margin: 10px 0 10px 8px;
+			}
+		}
+	}
+}
+#information-information {
+	#content {
+
+		ul,
+		ol {
+			margin-bottom: 18px;
+			padding-left: 0;
+			padding-right: 26px;
+
+			li {
+				padding-left: 0;
+				padding-right: 3px;
+			}
+		}
+
+		blockquote {
+			text-align: right;
+			border-right: 3px solid #e5e5e5;
+			border-left: 0;
+			margin-right: 0;
+			margin-left: 15px;
+		}
+	}
+}
+
+/* Owl-Nav */
+.owl-carousel{
+	.owl-nav {
+		left: 10px;
+		right: auto;
+		.owl-prev {	
+			i{
+				&:before{
+					content: "\f105";
+				}
+			}
+		}
+		.owl-next {
+			i{
+				&:before{
+					content: "\f104";
+				}
+			}
+		}
+	}
+}

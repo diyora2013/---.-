@@ -1,0 +1,47 @@
+<div class="box">
+    <h2 class="page-title hidden-sm hidden-xs">
+        {{ heading_title }}
+    </h2>
+    <div class="block-title clearfix  hidden-lg hidden-md collapsed" data-target="#box-container" data-toggle="collapse">
+        <span class="page-title">{{ heading_title }}</span>
+        <span class="navbar-toggler collapse-icons">
+          <i class="fa fa-angle-down add"></i>
+          <i class="fa fa-angle-up remove"></i>
+        </span>
+    </div>
+    <div id="box-container" class="collapse data-toggler">
+        <ul class="category-top-menu">
+            {% for category in categories %}
+            <li>                
+                {% if category.category_id == category_id %}                 
+                    <a href="{{ category.href }}" class="list-group-item active">{{ category.name }}</a>
+                                  
+                    {% if category.children %}
+                        <span class="navbar-toggler collapse-icons" data-target="#childlist" data-toggle="collapse">
+                            <i class="fa fa-angle-down add"></i>
+                            <i class="fa fa-angle-up remove"></i>
+                        </span> 
+                    {% endif %}
+                    <div id="childlist" class="collapse">                        
+                        <ul class="category-sub-menu">                    
+                            {% if category.children %}
+                                {% for child in category.children %}
+                                <li>
+                                    {% if child.category_id == child_id %}
+                                        <a href="{{ child.href }}" class="list-group-item active">&nbsp;&nbsp;&nbsp;- {{ child.name }}</a>
+                                        {% else %} 
+                                        <a href="{{ child.href }}" class="list-group-item">&nbsp;&nbsp;&nbsp;- {{ child.name }}</a>
+                                    {% endif %}
+                                </li>
+                                {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                {% else %} 
+                    <a href="{{ category.href }}" class="list-group-item">{{ category.name }}</a>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

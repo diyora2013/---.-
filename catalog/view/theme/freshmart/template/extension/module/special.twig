@@ -1,0 +1,35 @@
+<section class="featured-products clearfix">  
+  <h3 class="page-title hidden-sm hidden-xs">
+      {{ heading_title }}
+  </h3>
+  <div class="block-title clearfix  hidden-lg hidden-md collapsed" data-target="#special-container" data-toggle="collapse">
+    <span class="page-title">{{ heading_title }}</span>
+    <span class="navbar-toggler collapse-icons">
+      <i class="fa fa-angle-down add"></i>
+      <i class="fa fa-angle-up remove"></i>
+    </span>
+  </div>
+  <div id="special-container" class="collapse data-toggler">
+    {% for product in products %}
+      <div class="product-thumb transition">
+        <div class="image"><a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" /></a></div>
+        <div class="caption">
+          <h4><a href="{{ product.href }}">{{ product.name }}</a></h4>
+          <p class="description">{{ product.description }}</p>
+          {% if product.price %}
+            <p class="price">
+              {% if not product.special %}
+              {{ product.price }}
+              {% else %}
+              <span class="price-new">{{ product.special }}</span> <span class="price-old">{{ product.price }}</span>
+              {% endif %}
+              {% if product.tax %}
+              <span class="price-tax">{{ text_tax }} {{ product.tax }}</span>
+              {% endif %}
+            </p>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>

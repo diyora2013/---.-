@@ -1,0 +1,924 @@
+{{ header }}
+{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+        <button type="submit" form="form-filter" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button></div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid"> 
+  {% if success %}
+    <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+	{% if error_warning %}
+    <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_form }}</h3>
+      </div>
+      <div class="panel-body">
+        <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-filter" class="form-horizontal">
+			<div class="theme_section">
+				<h3>Themes configuration</h3>	
+				<div class="form-group">
+					<div class="row">
+						<div class="col-sm-4">
+							<label class="col-sm-6 control-label" for="input-button-color">{{ text_primarycolor }}</label>
+							<div class="col-sm-6">
+								<input type="text" name="primarycolor" class="form-control themecolor" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="{{ primarycolor }}">
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<label class="col-sm-6 control-label" for="input-link-color">{{ text_secondarycolor }}</label>
+							<div class="col-sm-6">
+								<input type="text" name="secondary_color" data-target=".btntextcolor" data-property="color" class="form-control themecolor" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="{{ secondary_color }}">
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<label class="col-sm-6 control-label" for="input-link-color">{{ text_tertiarycolor }}</label>
+							<div class="col-sm-6">
+								<input type="text" name="tertiary_color" data-target=".btntextcolor" data-property="color" class="form-control themecolor" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="{{ tertiary_color }}">
+							</div>
+						</div>
+					</div>
+				</div>	
+				<div class="form-group">
+					<div class="row">
+						<div class="col-sm-6">
+							<label class="col-sm-6 control-label" for="input-product_iconcolor">{{ entry_product_iconcolor }}</label>
+							<div class="col-sm-6">
+								<input type="text" name="product_iconcolor" data-property="color" class="form-control themecolor" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="{{ product_iconcolor }}">
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<label class="col-sm-6 control-label" for="input-product_icon_hovercolor">{{ entry_product_iconhovercolor }}</label>
+							<div class="col-sm-6">
+								<input type="text" name="product_icon_hovercolor" data-property="color" class="form-control themecolor" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="{{ product_icon_hovercolor }}">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-sm-6">
+							<label class="col-sm-6 control-label">{{ entry_bgimage }}</label>
+							<div class="col-sm-6"><a href="" id="thumb-background_image" data-toggle="image" class="img-thumbnail"><img src="{{ thumb_bg }}" alt="" title="" data-placeholder="{{ placeholder }}" /></a>
+								<input type="hidden" name="theme_bg_image" value="{{ theme_bg_image }}" id="input-background_image" />
+							</div>
+						</div>											
+						<div class="col-sm-6">
+							<label class="col-sm-6 control-label" for="input-subcategory_type">{{ entry_subcategorylist }}</label>
+							<div class="col-sm-6">
+								<select name="subcategory_type" id="input-subcategory_type" class="form-control">
+									<option value="none" {% if subcategory_type == 'none' %} selected=selected {% endif %}>{{ text_none }}</option>
+									<option value="grid" {% if subcategory_type == 'grid' %} selected=selected {% endif %}>{{ text_grid }}</option>
+									<option value="slider" {% if subcategory_type == 'slider' %} selected=selected {% endif %}>{{ text_slider }}</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-sm-6">
+							<label class="col-sm-6 control-label">{{ entry_image }}</label>
+							<div class="col-sm-6"><a href="" id="thumb-breadcrumb_image" data-toggle="image" class="img-thumbnail"><img src="{{ thumb }}" alt="" title="" data-placeholder="{{ placeholder }}" /></a>
+								<input type="hidden" name="breadcrumb_image" value="{{ breadcrumb_image }}" id="input-breadcrumb_image" />
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<label class="col-sm-6 control-label" for="input-breadcrumb-color">{{ text_breadcrumbcolor }}</label>
+							<div class="col-sm-6">
+								<input type="text" name="breadcrumb_color" data-target=".btntextcolor" data-property="color" class="form-control themecolor" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="{{ breadcrumb_color }}">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group border_bottom">	
+					<label class="col-sm-3 control-label" for="input-loader">{{ entry_loader }}</label>
+					<div class="col-sm-9">
+						<label>
+							<input type="radio" name="loader" value="loader_1" {% if loader == 'loader_1' %} checked {% endif %}>
+							<div class="loader"><div class="loader-1"></div></div>
+						</label>
+						<label>
+						<input type="radio" name="loader" value="loader_2" {% if loader == 'loader_2' %} checked {% endif %}>
+						<div class="loader"><div class="loader-2">
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+						</div></div>
+						</label>
+						<label>
+						<input type="radio" name="loader" value="loader_3" {% if loader == 'loader_3' %} checked {% endif %}>
+						<div class="loader"><div class="loader-3">
+							<div></div>
+							<div></div>
+							<div></div>
+						</div></div>
+						</label>
+						<label>
+						<input type="radio" name="loader" value="loader_4" {% if loader == 'loader_4' %} checked {% endif %}>
+						<div class="loader"><div class="loader-4 la-dark la-2x">
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+						</div></div>
+						</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-6">
+						<label class="col-sm-5 control-label" for="input-category-counter">{{ entry_category_counter }}</label>
+						<div class="col-sm-7">
+							<label class="switch">
+								{% if category_counter %}
+									<input type="checkbox" name="category_counter" value="1" class="primary" checked="checked" id="input-category-counter" />
+								{% else %}
+									<input type="checkbox" name="category_counter" value="1" class="primary" id="input-category-counter" />
+								{% endif %}
+								<span class="slider round"></span>
+							</label>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<label class="col-sm-5 control-label" for="input-product-counter">{{ entry_product_counter }}</label>
+						<div class="col-sm-7">
+							<label class="switch">
+								{% if product_counter %}
+									<input type="checkbox" name="product_counter" value="1" class="primary" checked="checked" id="input-product-counter" />
+								{% else %}
+									<input type="checkbox" name="product_counter" value="1" class="primary" id="input-product-counter" />
+								{% endif %}
+								<span class="slider round"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="theme_section">	
+				<h3>Header configuration</h3>	
+				<div class="form-group">
+					<div class="row">
+						<div class="col-sm-6">
+							<label class="col-sm-6 control-label" for="input-headerbg-top-color">{{ entry_header_top_bgcolor }}</label>
+							<div class="col-sm-6">
+								<input type="text" name="header_top_bgcolor" data-property="color" class="form-control themecolor" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="{{ header_top_bgcolor }}">
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<label class="col-sm-6 control-label" for="input-headertext-top-color">{{ entry_header_top_textcolor }}</label>
+							<div class="col-sm-6">
+								<input type="text" name="header_top_textcolor" data-property="color" class="form-control themecolor" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="{{ header_top_textcolor }}">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-sm-6">
+							<label class="col-sm-6 control-label" for="input-headertext-color">{{ entry_header_textcolor }}</label>
+							<div class="col-sm-6">
+								<input type="text" name="header_textcolor" data-property="color" class="form-control themecolor" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="{{ header_textcolor }}">
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<label class="col-sm-6 control-label" for="input-headertext-hover-color">{{ entry_header_hovertextcolor }}</label>
+							<div class="col-sm-6">
+								<input type="text" name="header_text_hovercolor" data-property="color" class="form-control themecolor" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="{{ header_text_hovercolor }}">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-sm-6">
+							<label class="col-sm-6 control-label" for="input-icon-color">{{ text_iconcolor }}</label>
+							<div class="col-sm-6">
+								<input type="text" name="icon_color" data-target=".btntextcolor" class="form-control themecolor" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="{{ icon_color }}">
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<label class="col-sm-6 control-label" for="input-iconresponsive-color">{{ text_iconresponsivecolor }}</label>
+							<div class="col-sm-6">
+								<input type="text" name="icon_responsivecolor" data-target=".btntextcolor" data-property="color" class="form-control themecolor" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="{{ icon_responsivecolor }}">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="theme_section">	
+				<h3>Button configuration</h3>	
+				<div class="form-group">
+					<div class="row">
+						<div class="col-sm-6">
+							<label class="col-sm-6 control-label" for="input-btn-color">{{ entry_btncolor }}</label>
+							<div class="col-sm-6">
+								<input type="text" name="btn_color" data-property="color" class="form-control themecolor" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="{{ btn_color }}">
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<label class="col-sm-6 control-label" for="input-hover-btn-color">{{ entry_hoverbtncolor }}</label>
+							<div class="col-sm-6">
+								<input type="text" name="btn_hover_color" data-property="color" class="form-control themecolor" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="{{ btn_hover_color }}">
+							</div>
+						</div>			
+					</div>			
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-sm-6">
+							<label class="col-sm-6 control-label" for="input-txt-color">{{ entry_btntextcolor }}</label>
+							<div class="col-sm-6">
+								<input type="text" name="btn_txtcolor" data-property="color" class="form-control themecolor" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="{{ btn_txtcolor }}">
+							</div>
+						</div>	
+						<div class="col-sm-6">
+							<label class="col-sm-6 control-label" for="input-hover-text-color">{{ entry_hoverbtntextcolor }}</label>
+							<div class="col-sm-6">
+								<input type="text" name="btn_hover_txtcolor" data-target=".btntextcolor" data-property="color" class="form-control themecolor" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="{{ btn_hover_txtcolor }}">
+							</div>
+						</div>				
+					</div>				
+				</div>		
+				<div class="form-group">
+					<div class="row">
+						<div class="col-sm-6">
+							<label class="col-sm-6 control-label" for="input-custom-btn-color">{{ entry_cutom_btncolor }}</label>
+							<div class="col-sm-6">
+								<input type="text" name="custom_btn_color" data-property="color" class="form-control themecolor" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="{{ custom_btn_color }}">
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<label class="col-sm-6 control-label" for="input-custom-hover-link-color">{{ entry_cutom_hoverbtncolor }}</label>
+							<div class="col-sm-6">
+								<input type="text" name="custom_btn_hover_color" data-property="color" class="form-control themecolor" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="{{ custom_btn_hover_color }}">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-sm-6">
+							<label class="col-sm-6 control-label" for="input-custom-link-color">{{ entry_cutom_btntextcolor }}</label>
+							<div class="col-sm-6">
+								<input type="text" name="custom_btn_txtcolor" data-property="color" class="form-control themecolor" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="{{ custom_btn_txtcolor }}">
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<label class="col-sm-6 control-label" for="input-custom-hover-text-color">{{ entry_cutom_hoverbtntextcolor }}</label>
+							<div class="col-sm-6">
+								<input type="text" name="custom_btn_hover_txtcolor" data-property="color" class="form-control themecolor" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="{{ custom_btn_hover_txtcolor }}">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="theme_section footer_border">	
+				<h3>Footer configuration</h3>	
+				<div class="form-group">
+					<div class="row">
+						<div class="col-sm-6">
+							<label class="col-sm-6 control-label" for="input-footer_bgimage">{{ entry_footer_bgimage }}</label>
+							<div class="col-sm-6"><a href="" id="thumb-footer_bgimage" data-toggle="image" class="img-thumbnail"><img src="{{ footer_thumb }}" alt="" title="" data-placeholder="{{ placeholder }}" /></a>
+								<input type="hidden" name="footer_bgimage" value="{{ footer_bgimage }}" id="input-footer_bgimage" />
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<label class="col-sm-6 control-label" for="input-footer_bgcolor">{{ entry_footer_bgcolor }}</label>
+							<div class="col-sm-6">
+								<input type="text" name="footer_bgcolor" data-property="color" class="form-control themecolor" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="{{ footer_bgcolor }}">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-sm-4">
+							<label class="col-sm-6 control-label" for="input-footertitle-color">{{ entry_footer_titlecolor }}</label>
+							<div class="col-sm-6">
+								<input type="text" name="footer_titlecolor" data-property="color" class="form-control themecolor" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="{{ footer_titlecolor }}">
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<label class="col-sm-6 control-label" for="input-footertext-color">{{ entry_footer_textcolor }}</label>
+							<div class="col-sm-6">
+								<input type="text" name="footer_textcolor" data-property="color" class="form-control themecolor" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="{{ footer_textcolor }}">
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<label class="col-sm-6 control-label" for="input-footertext-hover-color">{{ entry_footer_hovertextcolor }}</label>
+							<div class="col-sm-6">
+								<input type="text" name="footer_text_hovercolor" data-property="color" class="form-control themecolor" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="{{ footer_text_hovercolor }}">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+      </div>
+    </div>
+  </div>
+  <style>
+		.switch {
+			position: relative;
+			display: inline-block;
+			width: 60px;
+			height: 34px;
+		}
+
+		/* Hide default HTML checkbox */
+		.switch input {display:none;}
+
+		/* The slider */
+		.slider {
+			position: absolute;
+			cursor: pointer;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: #ccc;
+			-webkit-transition: .4s;
+			transition: .4s;
+		}
+
+		.slider:before {
+			position: absolute;
+			content: "";
+			height: 26px;
+			width: 26px;
+			left: 4px;
+			bottom: 4px;
+			background-color: white;
+			-webkit-transition: .4s;
+			transition: .4s;
+		}
+		input.default:checked + .slider {
+			background-color: #444;
+		}
+		input.primary:checked + .slider {
+			background-color: #2196F3;
+		}
+		input.success:checked + .slider {
+			background-color: #8bc34a;
+		}
+		input.info:checked + .slider {
+			background-color: #3de0f5;
+		}
+		input.warning:checked + .slider {
+			background-color: #FFC107;
+		}
+		input.danger:checked + .slider {
+			background-color: #f44336;
+		}
+
+		input:focus + .slider {
+			box-shadow: 0 0 1px #2196F3;
+		}
+
+		input:checked + .slider:before {
+			-webkit-transform: translateX(26px);
+			-ms-transform: translateX(26px);
+			transform: translateX(26px);
+		}
+
+		/* Rounded sliders */
+		.slider.round {
+			border-radius: 34px;
+		}
+
+		.slider.round:before {
+			border-radius: 50%;
+		}
+  		.theme_section {
+			  border-bottom: 2px solid #eee;
+			  padding: 20px 0;
+		}
+		.footer_border {
+			border: 0;
+		}
+		@media (max-width: 1199px) {/* If media is below 1200 */
+		.border_bottom {
+			border-bottom: 1px solid #ededed;
+			padding-bottom: 15px;
+			margin-bottom: 15px;
+			display: block;
+			position: relative;
+			overflow: hidden;
+		}}
+		[type=radio] { 
+		position: absolute !important;
+		opacity: 0 !important;
+		width: 0 !important;
+		height: 0 !important;
+		}
+
+		/* IMAGE STYLES */
+		[type=radio] + .loader {
+		cursor: pointer;
+		width: 120px;
+		height: 120px;
+		margin: 0 15px;
+		position: relative;
+		float: left;
+		}
+		[type=radio] + .loader {
+		outline: 2px solid #eee;
+		}
+
+		/* CHECKED STYLES */
+		[type=radio]:checked + .loader {
+		outline: 2px solid #f00;
+		}
+
+		:root {
+			--main-color: #cf0202;
+		}
+		.loader-1 {
+			display: block;
+			position: absolute;
+			top: 8px;
+			left: 0;
+			right: 0;
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			text-align: center;
+			margin: 0 auto;
+			border: 3px solid transparent;
+			border-top-color: transparent;
+			border-top-color: var(--main-color);
+			-webkit-animation: spin 2s linear infinite;
+			animation: spin 2s linear infinite;
+		}
+		.loader-1::before {
+			content: "";
+			position: absolute;
+			top: 5px;
+			left: 5px;
+			right: 5px;
+			bottom: 5px;
+			border-radius: 50%;
+			border: 3px solid transparent;
+			border-top-color: var(--main-color);
+			-webkit-animation: spin 3s linear infinite;
+			animation: spin 3s linear infinite;
+		}
+		.loader-1::after {
+			content: "";
+			position: absolute;
+			top: 15px;
+			left: 15px;
+			right: 15px;
+			bottom: 15px;
+			border-radius: 50%;
+			border: 3px solid transparent;
+			border-top-color: transparent;
+			border-top-color: var(--main-color);
+			-webkit-animation: spin 1.5s linear infinite;
+			animation: spin 1.5s linear infinite;
+		}
+		.loader-2 {
+			position: relative;
+			top: 24px;
+			display: grid;
+			grid-template-columns: 33% 33% 33%;
+			grid-gap: 2px;
+			width: 70px;
+			height: 70px;
+			text-align: center;
+			margin: 0 auto;
+		}
+		.loader-2 > div {
+			position: relative;
+			display: inline-block;
+			width: 100%;
+			height: 100%;
+			background: var(--main-color);
+			transform: scale(0);
+			transform-origin: center center;
+			animation: loader 2s infinite linear;
+		}
+		.loader-2 > div:nth-of-type(1), .loader-2 > div:nth-of-type(5), .loader-2 > div:nth-of-type(9) {
+			animation-delay: 0.4s;
+		}
+		.loader-2 > div:nth-of-type(4), .loader-2 > div:nth-of-type(8) {
+			animation-delay: 0.2s;
+		}
+		.loader-2 > div:nth-of-type(2), .loader-2 > div:nth-of-type(6) {
+			animation-delay: 0.6s;
+		}
+		.loader-2 > div:nth-of-type(3) {
+			animation-delay: 0.8s;
+		}
+		.loader-3 {
+			display: block;
+			font-size: 0;
+			color: var(--main-color);
+			width: 80px;
+			height: 80px;
+			text-align: center;
+			margin: 0 12px;
+			top: 12px;
+			position: relative;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		.loader-3 > div {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 96px;
+			height: 96px;
+			border-radius: 100%;
+			opacity: 0;
+			-webkit-animation: ball-scale-ripple-multiple 1.25s 0s infinite cubic-bezier(0.21, 0.53, 0.56, 0.8);
+			-moz-animation: ball-scale-ripple-multiple 1.25s 0s infinite cubic-bezier(0.21, 0.53, 0.56, 0.8);
+			-o-animation: ball-scale-ripple-multiple 1.25s 0s infinite cubic-bezier(0.21, 0.53, 0.56, 0.8);
+			animation: ball-scale-ripple-multiple 1.25s 0s infinite cubic-bezier(0.21, 0.53, 0.56, 0.8);
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			display: inline-block;
+			float: none;
+			background-color: currentColor;
+			border: 0 solid currentColor;
+		}
+		.loader-3 > div:nth-child(1) {
+			-webkit-animation-delay: 0s;
+			-moz-animation-delay: 0s;
+			-o-animation-delay: 0s;
+			animation-delay: 0s;
+		}
+		.loader-3 > div:nth-child(2) {
+			-webkit-animation-delay: 0.25s;
+			-moz-animation-delay: 0.25s;
+			-o-animation-delay: 0.25s;
+			animation-delay: 0.25s;
+		}
+		.loader-3 > div:nth-child(3) {
+			-webkit-animation-delay: 0.5s;
+			-moz-animation-delay: 0.5s;
+			-o-animation-delay: 0.5s;
+			animation-delay: 0.5s;
+		}
+		.loader-4 {
+			display: block;
+			font-size: 0;
+			color: var(--main-color);
+			top: 43px;
+			text-align: center;
+			margin: 0 auto;
+			position: relative;
+    		-webkit-box-sizing: border-box;
+       		-moz-box-sizing: border-box;
+            box-sizing: border-box;
+		}
+		.loader-4 > div {
+			background-color: currentColor;
+			border: 0 solid currentColor;
+			position: absolute;
+			top: 0;
+			left: -100%;
+			display: block;
+			border-radius: 100%;
+			opacity: .5;
+    		-webkit-animation: ball-circus-position 2.5s infinite cubic-bezier(.25, 0, .75, 1), ball-circus-size 2.5s infinite cubic-bezier(.25, 0, .75, 1);
+       		-moz-animation: ball-circus-position 2.5s infinite cubic-bezier(.25, 0, .75, 1), ball-circus-size 2.5s infinite cubic-bezier(.25, 0, .75, 1);
+			-o-animation: ball-circus-position 2.5s infinite cubic-bezier(.25, 0, .75, 1), ball-circus-size 2.5s infinite cubic-bezier(.25, 0, .75, 1);
+            animation: ball-circus-position 2.5s infinite cubic-bezier(.25, 0, .75, 1), ball-circus-size 2.5s infinite cubic-bezier(.25, 0, .75, 1);
+		}
+		.loader-4 > div:nth-child(1) {
+			-webkit-animation-delay: 0s, -.5s;
+			-moz-animation-delay: 0s, -.5s;
+				-o-animation-delay: 0s, -.5s;
+					animation-delay: 0s, -.5s;
+		}
+		.loader-4 > div:nth-child(2) {
+			-webkit-animation-delay: -.5s, -1s;
+			-moz-animation-delay: -.5s, -1s;
+				-o-animation-delay: -.5s, -1s;
+					animation-delay: -.5s, -1s;
+		}
+		.loader-4 > div:nth-child(3) {
+			-webkit-animation-delay: -1s, -1.5s;
+			-moz-animation-delay: -1s, -1.5s;
+				-o-animation-delay: -1s, -1.5s;
+					animation-delay: -1s, -1.5s;
+		}
+		.loader-4 > div:nth-child(4) {
+			-webkit-animation-delay: -1.5s, -2s;
+			-moz-animation-delay: -1.5s, -2s;
+				-o-animation-delay: -1.5s, -2s;
+					animation-delay: -1.5s, -2s;
+		}
+		.loader-4 > div:nth-child(5) {
+			-webkit-animation-delay: -2s, -2.5s;
+			-moz-animation-delay: -2s, -2.5s;
+				-o-animation-delay: -2s, -2.5s;
+					animation-delay: -2s, -2.5s;
+		}
+		.loader-4.la-2x {
+			width: 32px;
+			height: 32px;
+		}
+		.loader-4.la-2x > div {
+			width: 32px;
+			height: 32px;
+		}
+		@keyframes spin {
+		0% {
+			-webkit-transform: rotate(0deg);
+			-ms-transform: rotate(0deg);
+			transform: rotate(0deg);
+		}
+
+		100% {
+			-webkit-transform: rotate(360deg);
+			-ms-transform: rotate(360deg);
+			transform: rotate(360deg);
+		}
+		}
+		@-o-keyframes spin {
+		0% {
+			-webkit-transform: rotate(0deg);
+			-ms-transform: rotate(0deg);
+			transform: rotate(0deg);
+		}
+
+		100% {
+			-webkit-transform: rotate(360deg);
+			-ms-transform: rotate(360deg);
+			transform: rotate(360deg);
+		}
+		}
+		@-moz-keyframes spin {
+		0% {
+			-webkit-transform: rotate(0deg);
+			-ms-transform: rotate(0deg);
+			transform: rotate(0deg);
+		}
+
+		100% {
+			-webkit-transform: rotate(360deg);
+			-ms-transform: rotate(360deg);
+			transform: rotate(360deg);
+		}
+		}
+		@-webkit-keyframes spin {
+		0% {
+			-webkit-transform: rotate(0deg);
+			-ms-transform: rotate(0deg);
+			transform: rotate(0deg);
+		}
+
+		100% {
+			-webkit-transform: rotate(360deg);
+			-ms-transform: rotate(360deg);
+			transform: rotate(360deg);
+		}
+		}
+		@-ms-keyframes spin {
+		0% {
+			-webkit-transform: rotate(0deg);
+			-ms-transform: rotate(0deg);
+			transform: rotate(0deg);
+		}
+
+		100% {
+			-webkit-transform: rotate(360deg);
+			-ms-transform: rotate(360deg);
+			transform: rotate(360deg);
+		}
+		}
+
+
+		@keyframes loader {
+		0%   { transform: scale(0.0); }
+		40%  { transform: scale(1.0); }
+		80%  { transform: scale(1.0); }
+		100% { transform: scale(0.0); }
+		}
+		@-webkit-keyframes loader {
+		0%   { transform: scale(0.0); }
+		40%  { transform: scale(1.0); }
+		80%  { transform: scale(1.0); }
+		100% { transform: scale(0.0); }
+		}
+		@-ms-keyframes loader {
+		0%   { transform: scale(0.0); }
+		40%  { transform: scale(1.0); }
+		80%  { transform: scale(1.0); }
+		100% { transform: scale(0.0); }
+		}
+		@-o-keyframes loader {
+		0%   { transform: scale(0.0); }
+		40%  { transform: scale(1.0); }
+		80%  { transform: scale(1.0); }
+		100% { transform: scale(0.0); }
+		}
+		@-moz-keyframes loader {
+		0%   { transform: scale(0.0); }
+		40%  { transform: scale(1.0); }
+		80%  { transform: scale(1.0); }
+		100% { transform: scale(0.0); }
+		}
+
+
+		@-webkit-keyframes ball-scale-ripple-multiple {
+		0% {
+			opacity: 1;
+			-webkit-transform: scale(.1);
+			transform: scale(.1);
+		}
+
+		70% {
+			opacity: .5;
+			-webkit-transform: scale(1);
+			transform: scale(1);
+		}
+
+		95% {
+			opacity: 0;
+		}
+		}
+
+		@-moz-keyframes ball-scale-ripple-multiple {
+		0% {
+			opacity: 1;
+			-moz-transform: scale(.1);
+			transform: scale(.1);
+		}
+
+		70% {
+			opacity: .5;
+			-moz-transform: scale(1);
+			transform: scale(1);
+		}
+
+		95% {
+			opacity: 0;
+		}
+		}
+
+		@-o-keyframes ball-scale-ripple-multiple {
+		0% {
+			opacity: 1;
+			-o-transform: scale(.1);
+			transform: scale(.1);
+		}
+
+		70% {
+			opacity: .5;
+			-o-transform: scale(1);
+			transform: scale(1);
+		}
+
+		95% {
+			opacity: 0;
+		}
+		}
+
+		@keyframes ball-scale-ripple-multiple {
+		0% {
+			opacity: 1;
+			-webkit-transform: scale(.1);
+			-moz-transform: scale(.1);
+			-o-transform: scale(.1);
+			transform: scale(.1);
+		}
+
+		70% {
+			opacity: .5;
+			-webkit-transform: scale(1);
+			-moz-transform: scale(1);
+			-o-transform: scale(1);
+			transform: scale(1);
+		}
+
+		95% {
+			opacity: 0;
+		}
+		}
+		@keyframes ball-scale-ripple-multiple {
+		0% {
+			opacity: 1;
+			-webkit-transform: scale(.1);
+			-moz-transform: scale(.1);
+			-o-transform: scale(.1);
+			transform: scale(.1);
+		}
+
+		70% {
+			opacity: .5;
+			-webkit-transform: scale(1);
+			-moz-transform: scale(1);
+			-o-transform: scale(1);
+			transform: scale(1);
+		}
+
+		95% {
+			opacity: 0;
+		}
+		}
+		@-webkit-keyframes ball-circus-position {
+			50% {
+				left: 100%;
+			}
+		}
+		@-moz-keyframes ball-circus-position {
+			50% {
+				left: 100%;
+			}
+		}
+		@-o-keyframes ball-circus-position {
+			50% {
+				left: 100%;
+			}
+		}
+		@keyframes ball-circus-position {
+			50% {
+				left: 100%;
+			}
+		}
+		@-webkit-keyframes ball-circus-size {
+			50% {
+				-webkit-transform: scale(.3, .3);
+						transform: scale(.3, .3);
+			}
+		}
+		@-moz-keyframes ball-circus-size {
+			50% {
+				-moz-transform: scale(.3, .3);
+					transform: scale(.3, .3);
+			}
+		}
+		@-o-keyframes ball-circus-size {
+			50% {
+				-o-transform: scale(.3, .3);
+				transform: scale(.3, .3);
+			}
+		}
+		@keyframes ball-circus-size {
+			50% {
+				-webkit-transform: scale(.3, .3);
+				-moz-transform: scale(.3, .3);
+					-o-transform: scale(.3, .3);
+						transform: scale(.3, .3);
+			}
+		}
+  </style>
+  <script type="text/javascript">
+  	$(document).ready( function() {
+      $('.themecolor').each( function() {
+        $(this).minicolors({
+          control: $(this).attr('data-control') || 'hue',
+          defaultValue: $(this).attr('data-defaultValue') || '',
+          format: $(this).attr('data-format') || 'hex',
+          keywords: $(this).attr('data-keywords') || '',
+          inline: $(this).attr('data-inline') === 'true',
+          letterCase: $(this).attr('data-letterCase') || 'lowercase',
+          opacity: $(this).attr('data-opacity'),
+          position: $(this).attr('data-position') || 'bottom',
+          swatches: $(this).attr('data-swatches') ? $(this).attr('data-swatches').split('|') : [],
+          change: function(value, opacity) {
+            if( !value ) return;
+            if( opacity ) value += ', ' + opacity;
+            if( typeof console === 'object' ) {
+              console.log(value);
+            }
+          },
+          theme: 'bootstrap',
+		  change: function(hex, opacity) {
+			  jQuery('.panel .mail-preview iframe').contents().find(jQuery(this).attr('data-target')).css(jQuery(this).attr('data-property'), hex);
+			}
+        });
+
+      });
+    });
+  </script>
+  <link href="view/javascript/bootstrap/colorpicker/jquery.minicolors.css" rel="stylesheet" />
+  <script type="text/javascript" src="view/javascript/bootstrap/colorpicker/jquery.minicolors.min.js"></script> 
+{{ footer }}

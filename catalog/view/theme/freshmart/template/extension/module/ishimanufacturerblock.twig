@@ -1,0 +1,44 @@
+<section id="{{ ishi_randomnumer }}" class="manufacturerblock">
+    <h3 class="home-title">{{ heading }}</h3>
+    <div class="owl-carousel">
+        {% for manufacturer in manufacturers %}
+            <div class="item">
+                {% if manufacturer.link %}
+                    <a href="{{ manufacturer.link }}">
+                        <img src="{{ manufacturer.image }}" alt="{{ manufacturer.title }}" class="img-responsive" />
+                    </a>
+                {% else %}
+                    <img src="{{ manufacturer.image }}" alt="{{ manufacturer.title }}" class="img-responsive" />
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    <script type="text/javascript">
+        $('#{{ ishi_randomnumer }} .owl-carousel').owlCarousel({
+            loop:{{ loop }},
+            nav:true,
+            dots:false,
+            autoplay:{{ autoplay }},
+            animateOut: 'fadeOut',
+            rtl: $('html').attr('dir') == 'rtl'? true : false,
+            navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+            responsive:{
+                    0:{
+                        items:2
+                    },
+                    480:{
+                        items:3
+                    },
+                    768:{
+                        items:4
+                    },
+                    992:{
+                        items:4
+                    },
+                    1200:{
+                        items:5
+                    }
+                }
+        });
+    </script>
+</section>

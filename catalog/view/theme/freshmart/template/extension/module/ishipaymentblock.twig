@@ -1,0 +1,11 @@
+  <div id="{{ ishi_randomnumer }}" class="ishipaymentblock">
+	  <div id="paymentblock">
+	  		{% for ishi_sliderimage in ishi_sliderimages %}
+			    <div class="item">
+			        <a href="{{ ishi_sliderimage.link }}">
+			        <img src="{{ ishi_sliderimage.image }}" alt="{{ ishi_sliderimage.title }}" class="img-responsive" />
+			        </a>
+			    </div>
+		    {% endfor %}
+	  </div>
+</div>

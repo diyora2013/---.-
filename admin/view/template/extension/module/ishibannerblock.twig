@@ -1,0 +1,294 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+        <button type="submit" form="form-module" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+        <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    {% if error_warning %}
+    <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_edit }}</h3>
+      </div>
+      <div class="panel-body">
+        <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-module" class="form-horizontal">
+			<div class="tab-pane" id="tab-design">
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#tab-general" data-toggle="tab">{{ tab_general }}</a></li>
+					<li><a href="#tab-banner" data-toggle="tab">{{ entry_banner }}</a></li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="tab-general">
+					  <div class="form-group">
+						<label class="col-sm-2 control-label" for="input-name">{{ entry_name }}</label>
+						<div class="col-sm-10">
+						  <input type="text" name="name" value="{{ name }}" placeholder="{{ entry_name }}" id="input-name" class="form-control" />
+						  {% if error_name %}
+						  <div class="text-danger">{{ error_name }}</div>
+						  {% endif %}
+						</div>
+					  </div>
+					  <div class="form-group">
+						<label class="col-sm-2 control-label" for="input-width">{{ entry_width }}</label>
+						<div class="col-sm-10">
+						  <input type="text" name="width" value="{{ width }}" placeholder="{{ entry_width }}" id="input-width" class="form-control" />
+						  {% if error_width %}
+						  <div class="text-danger">{{ error_width }}</div>
+						  {% endif %}
+						</div>
+					  </div>
+					  <div class="form-group">
+						<label class="col-sm-2 control-label" for="input-height">{{ entry_height }}</label>
+						<div class="col-sm-10">
+						  <input type="text" name="height" value="{{ height }}" placeholder="{{ entry_height }}" id="input-height" class="form-control" />
+						  {% if error_height %}
+						  <div class="text-danger">{{ error_height }}</div>
+						  {% endif %}
+						</div>
+					  </div>
+					  <div class="form-group">
+						<label class="col-sm-2 control-label" for="input-column">{{ entry_column }}</label>
+						<div class="col-sm-10">
+							<select name="column" id="input-column" class="form-control">
+								<option value="1" {% if column == 1 %} selected=selected {% endif %}>1</option>
+								<option value="2" {% if column == 2 %} selected=selected {% endif %}>2</option>
+								<option value="3" {% if column == 3 %} selected=selected {% endif %}>3</option>
+								<option value="4" {% if column == 4 %} selected=selected {% endif %}>4</option>
+							</select>
+						</div>
+					  </div>
+					  <div class="form-group">
+						<label class="col-sm-2 control-label" for="input-style">{{ entry_hoverstyle }}</label>
+						<div class="col-sm-10">
+						<select name="style" id="input-style" class="form-control">
+							<option value="ishi-customhover-fadeinnormal" {% if style == 'ishi-customhover-fadeinnormal' %} selected=selected {% endif %}>{{ entry_fadeinnormal }}</option>
+							<option value="ishi-customhover-fadeinflip" {% if style == 'ishi-customhover-fadeinflip' %} selected=selected {% endif %}>{{ entry_fadeinflip }}</option>
+							<option value="ishi-customhover-fadeinrotate" {% if style == 'ishi-customhover-fadeinrotate' %} selected=selected {% endif %}>{{ entry_fadeinrotate }}</option>
+							<option value="ishi-customhover-fadeinrotate3D" {% if style == 'ishi-customhover-fadeinrotate3D' %} selected=selected {% endif %}>{{ entry_fadeinrotate3d }}</option>
+							<option value="ishi-customhover-fadeintop" {% if style == 'ishi-customhover-fadeintop' %} selected=selected {% endif %}>{{ entry_fadeintop }}</option>
+							<option value="ishi-customhover-fadeinbottom" {% if style == 'ishi-customhover-fadeinbottom' %} selected=selected {% endif %}>{{ entry_fadeinbottom }}</option>
+							<option value="ishi-customhover-fadeintopbottom" {% if style == 'ishi-customhover-fadeintopbottom' %} selected=selected {% endif %}>{{ entry_fadeintopbottom }}</option>
+							<option value="ishi-customhover-doublefadeincenter" {% if style == 'ishi-customhover-doublefadeincenter' %} selected=selected {% endif %}>{{ entry_doublefadeincenter }}</option>
+							<option value="ishi-customhover-fadeoutcenter" {% if style == 'ishi-customhover-fadeoutcenter' %} selected=selected {% endif %}>{{ entry_fadeoutcenter }}</option>
+							<option value="ishi-customhover-fadeoutcorner" {% if style == 'ishi-customhover-fadeoutcorner' %} selected=selected {% endif %}>{{ entry_fadeoutcorner }}</option>
+							<option value="ishi-customhover-fadeinoutcorner" {% if style == 'ishi-customhover-fadeinoutcorner' %} selected=selected {% endif %}>{{ entry_fadeinoutcorner }}</option>
+							<option value="ishi-customhover-fadeinsquare" {% if style == 'ishi-customhover-fadeinsquare' %} selected=selected {% endif %}>{{ entry_fadeinsquare }}</option>
+						</select>
+						</div>
+					  </div>
+					  <div class="form-group">
+						<label class="col-sm-2 control-label" for="input-scale">{{ entry_scale }}</label>
+						<div class="col-sm-10">
+							<label class="switch">
+							{% if scale %}
+								<input type="checkbox" name="scale" value="1" class="primary" checked="checked" id="input-scale" />
+							{% else %}
+								<input type="checkbox" name="scale" value="1" class="primary" id="input-scale" />
+							{% endif %}
+								<span class="slider round"></span>
+							</label>
+						</div>
+					  </div>
+					  <div class="form-group">
+						<label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
+						<div class="col-sm-10">
+						  <select name="status" id="input-status" class="form-control">
+							{% if status %}
+							<option value="1" selected="selected">{{ text_enabled }}</option>
+							<option value="0">{{ text_disabled }}</option>
+							{% else %}
+							<option value="1">{{ text_enabled }}</option>
+							<option value="0" selected="selected">{{ text_disabled }}</option>
+							{% endif %}
+						  </select>
+						</div>
+					  </div>
+					</div>
+					<div class="tab-pane" id="tab-banner">
+						<div class="row">
+							<div class="col-sm-2">
+								<ul class="nav nav-pills nav-stacked" id="bannerstab">
+									{% set banner_row = 0 %}
+									{% for ishi_banner in ishi_banners %}
+									<li><a href="#tab-singlebanner{{ banner_row }}" data-toggle="tab"><i class="fa fa-minus-circle" onclick="$('a[href=\'#tab-singlebanner{{ banner_row }}\']').parent().remove(); $('#tab-singlebanner{{ banner_row }}').remove(); $('#bannerstab a:first').tab('show');"></i>{{ ishi_banner.default_name }} </a></li>
+									{% set banner_row = banner_row + 1 %}
+									{% endfor %}
+									<li><button type="button" class="btn btn-block" onclick="addbannertab();"><i class="fa fa-plus-circle"></i> {{ entry_addbanner }} </button></li>
+								</ul>
+							</div>
+							<div class="col-sm-10">
+								 <div class="tab-content" id="ishi_bannertabs">{% set banner_row = 0 %}
+								 {% for ishi_banner in ishi_banners %}
+								 <div class="tab-pane" id="tab-singlebanner{{ banner_row }}">
+								 <div class="form-group">
+									<label class="col-sm-2 control-label" for="input-image-{{ banner_row }}">{{ entry_image }}</label>
+										<div class="col-sm-10">
+											<a href="" id="thumb-image-{{ banner_row }}" data-toggle="image" class="img-thumbnail"><img src="{{ ishi_banner.thumb }}" alt="" title="" data-placeholder="{{ ishi_banner.placeholder }}" /></a>
+											<input type="hidden" name="ishibanner[{{ banner_row }}][image]" value="{{ ishi_banner.image }}" id="input-image-{{ banner_row }}" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label" for="input-link-{{ banner_row }}">{{ entry_link }}</label>
+										<div class="col-sm-10">
+											<input type="text" name="ishibanner[{{ banner_row }}][link]" value="{{ ishi_banner.link ? ishi_banner.link }}" placeholder="{{ entry_link }}" class="form-control" id="input-link-{{ banner_row }}"/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label" for="input-sort-order-{{ banner_row }}">{{ entry_sortorder }}</label>
+										<div class="col-sm-10">
+											<input type="text" name="ishibanner[{{ banner_row }}][sort_order]" value="{{ ishi_banner.sort_order ? ishi_banner.sort_order }}" placeholder="{{ entry_sortorder }}" class="form-control" id="input-sort-order-{{ banner_row }}"/>
+										</div>
+									</div>
+								 </div>
+								 {% set banner_row = banner_row + 1 %}
+									{% endfor %}
+								 </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+/* The switch - the box around the slider */
+.showtext{
+	display:none;
+}
+.show{
+	display:block;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input.default:checked + .slider {
+  background-color: #444;
+}
+input.primary:checked + .slider {
+  background-color: #2196F3;
+}
+input.success:checked + .slider {
+  background-color: #8bc34a;
+}
+input.info:checked + .slider {
+  background-color: #3de0f5;
+}
+input.warning:checked + .slider {
+  background-color: #FFC107;
+}
+input.danger:checked + .slider {
+  background-color: #f44336;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+</style>
+
+<script type="text/javascript">
+function boxDisable(e, t) {
+var id = e + 'show';
+
+    if (t.is(':checked')) {
+		$('.'+id).attr("style", "display: block !important");
+    } else {
+      $('.'+id).attr("style", "display: none !important");
+    }
+}
+var banner_row = {{ banner_row }};
+function addbannertab() {
+		var newtab = 'tab-singlebanner'+ banner_row;
+
+		html  = '<div class="tab-pane" id="tab-singlebanner'+ banner_row +'">';
+								
+		html  += '<div class="form-group"> <label class="col-sm-2 control-label" for="input-title">{{ entry_image }}</label> <div class="col-sm-10"><a href="" id="thumb-image-'+ banner_row +'" data-toggle="image" class="img-thumbnail"><img src="{{ thumb }}" alt="" title="" data-placeholder="{{ placeholder }}"/></a><input type="hidden" name="ishibanner['+ banner_row +'][image]" value="{{ image }}" id="input-image-'+ banner_row +'" /></div></div>';
+		
+		html  += '<div class="form-group">';
+		html  += '<label class="col-sm-2 control-label" for="input-contactno'+ banner_row +'">{{ entry_link }}</label>';
+		html  += '<div class="col-sm-10">';
+		html  += '<input type="text" name="ishibanner['+ banner_row +'][link]" value="" placeholder="{{ entry_link }}" class="form-control" id="input-contactno'+ banner_row +'" />';
+		html  += '<span>{{ help_contact }}</span>';
+		html  += '</div>';
+		html  += '</div>';
+		
+		html  += '<div class="form-group">';
+		html  += '<label class="col-sm-2 control-label" for="input-sort-order-'+ banner_row +'">{{ entry_sortorder }}</label>';
+		html  += '<div class="col-sm-10">';
+		html  += '<input type="text" name="ishibanner['+ banner_row +'][sort_order]" value="1" placeholder="{{ entry_sortorder }}" class="form-control" id="input-sort-order-'+ banner_row +'" />';
+		html  += '</div>';
+		html  += '</div>';
+		
+		$('#tab-banner #ishi_bannertabs').append(html);
+		
+		$('#bannerstab > li:last-child').before('<li><a href="#tab-singlebanner' + banner_row + '" data-toggle="tab"><i class="fa fa-minus-circle" onclick=" $(\'#bannerstab a:first\').tab(\'show\');$(\'a[href=\\\'#tab-singlebanner' + banner_row + '\\\']\').parent().remove(); $(\'#tab-singlebanner' + banner_row + '\').remove();"></i> {{ entry_banner }} </li>');
+		 
+		$('#bannerstab a[href=\'#tab-singlebanner' + banner_row + '\']').tab('show');
+
+		banner_row++;
+	}
+	$('#bannerstab a:first').tab('show');
+</script>
+{{ footer }}

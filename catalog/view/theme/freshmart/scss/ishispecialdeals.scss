@@ -1,0 +1,27 @@
+.ishispecialdeals {
+	.row{
+		@media (max-width: 543px) {
+			margin: 0 -10px;
+		}
+	}
+	.product-thumb {
+		@media (max-width: 543px) {
+			/* If media is below 544 */
+			margin: 0 5px;
+		}
+		margin: 0 15px;
+		.caption {
+			.description {
+				display: initial;
+				margin: 6px 0 0;
+				display: block;
+				font-size: 13px;
+				font-weight: 300;
+			}
+		}
+	}
+	.owl-nav {
+		right: 15px;
+		top: -69px;
+	}
+}

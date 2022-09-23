@@ -1,0 +1,18 @@
+<section class="ishiservicesblock clearfix">
+    {% if showtitle == 1 %}
+        <h3 class="home-title">{{ title }}</h3>
+    {% endif %}
+    <div class="row">
+        {% for ishiservice in ishiservices %}
+            <div class="services {{ class }}">
+                <a href="#" class="service-bg" style="background: {{ bg_color }};">
+                    <div class="service-img" style="background-image: url({{ ishiservice.image }});"></div>
+                    <div class="service-block">
+                        <div class="service-title">{{ ishiservice.title }}</div>
+                        <div class="service-desc">{{ ishiservice.description }}</div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</section>

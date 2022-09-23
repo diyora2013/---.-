@@ -1,0 +1,90 @@
+
+{% if categories %}
+    <div id="_desktop_top_menu" class="menu js-top-menu hidden-xs hidden-sm {{ ishome }}">
+      <h2 class="home-title hidden-xs hidden-sm">
+        <span>
+          <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 300 300">
+          <rect x="0" y="70.333" width="42.667" height="35.667"/>
+          <rect x="0" y="160.667" width="42.667" height="35.667"/>
+          <rect x="0" y="250" width="42.667" height="35.667"/>
+          <rect x="85.333" y="70.333" width="230.557" height="35.667"/>
+          <rect x="85.333" y="160.667" width="230.557" height="35.667"/>
+          <rect x="85.333" y="250" width="230.557" height="35.667"/></svg>
+        </span>{{ text_title }}
+      </h2>
+        {# add class name as 'mega-menu' LIKE class="mega-menu" #}
+          <ul id="top-menu" class="top-menu" data-depth="0">
+            {% for category in categories %}
+            {% if category.children %}
+            {% set temprand = random(10000) %}
+            <li class="top_level_category dropdown">
+              <a class="dropdown-item" href="{{ category.href }}">{{ category.name }}
+                {% if category.children %}
+                  <i class="fa fa-angle-right add hidden-xs hidden-sm"></i>
+                {% endif %}
+              </a>
+              <span class="pull-xs-right hidden-md hidden-lg">
+                  <span data-target="#top_sub_menu_{{temprand}}" data-toggle="collapse" class="navbar-toggler collapse-icons">
+                    <i class="fa fa-angle-down add"></i>
+                    <i class="fa fa-angle-up remove"></i>
+                  </span>
+              </span>
+              <div id="top_sub_menu_{{temprand}}" class="dropdown-menu popover sub-menu collapse">
+                  {% for children in category.children|batch(category.children|length / category.column|round(1, 'ceil')) %}
+                  <ul class="list-unstyled childs_1 category_dropdownmenu {% if category.column <=1 %} {{ 'single-dropdown-menu' }} {% else %} {{ 'multiple-dropdown-menu' }} {% endif %}" data-depth="1">
+
+                    {% for child in children %}   {# 2 Level Sub Categories START #}
+                    {% if child.childs %}
+                    {% set temprand = random(10000) %}
+                      <li class="category dropdown sub-category">
+                        <a class="dropdown-item dropdown-submenu" href="{{ child.href }}">{{ child.name }}</a>
+                        <span class="pull-xs-right hidden-md hidden-lg">
+                            <span data-target="#top_sub_menu_{{temprand}}" data-toggle="collapse" class="navbar-toggler collapse-icons">
+                              <i class="fa fa-angle-down add"></i>
+                              <i class="fa fa-angle-up remove"></i>
+                            </span>
+                        </span>
+                        <div id="top_sub_menu_{{temprand}}" class="dropdown-inner collapse">
+                            {% for childs_col in child.childs|batch(child.childs|length / child.column|round(1, 'ceil')) %}
+                            <ul class="list-unstyled childs_2 top-menu" data-depth="2">
+                              {% for childs_2 in childs_col %}
+                              <li class="category">
+                                <a class="dropdown-item" href="{{ childs_2.href }}">{{ childs_2.name }}</a>
+                              </li>
+                              {% endfor %}
+                            </ul>
+                            {% endfor %}
+                        </div>
+                      </li>
+                    {% else %}
+                      <li><a href="{{ child.href }}">{{ child.name }}</a></li>
+                    {% endif %}   {# 2 Level Sub Categories END #}
+                    {% endfor %}
+                  </ul>
+                  {% endfor %}
+              </div>
+            </li>
+            {% else %}
+            <li class="maintitle"><a href="{{ category.href }}">{{ category.name }}</a></li>
+            {% endif %}
+            {% endfor %}
+            {% if blog_enable == true %}
+            <li> <a href="{{ all_blogs }}">
+              <span data-hover="{{ text_blog }}">{{ text_blog }}</span>
+            </a></li>       
+            {% endif %}   
+          </ul>
+    </div>    
+    <div id="mobile_top_menu_wrapper" class="hidden-lg hidden-md" style="display:none;">
+      <div id="top_menu_closer">
+        <i class="fa fa-close"></i>
+      </div>
+      <div class="js-top-menu mobile" id="_mobile_top_menu"></div>
+    </div> 
+{% endif %}  
+<script type="text/javascript"> 
+$("#_desktop_top_menu").click(function(){
+        $("#top-menu").slideToggle();
+        $('.wrapper').toggleClass('open');
+});
+</script>

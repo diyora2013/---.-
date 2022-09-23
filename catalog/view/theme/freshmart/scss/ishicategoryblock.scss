@@ -1,0 +1,141 @@
+.ishicategoryblock {
+	background: $light-color;
+	border:1px solid #e9e9e9;
+	@media (max-width: 991px) {
+		margin-bottom: 15px;
+		border: 1px solid #e9e9e9;
+	}
+
+	>.collapse {
+		@media (min-width: 992px) {
+			/* If media is above 991 */
+			display: block;
+		}
+	}
+
+	#category-container {
+		@media (max-width: 991px) {
+			padding: 15px;
+		}
+
+		.panel-group {
+			margin-bottom: 0;
+			@media (max-width: 991px) {
+				margin: 0;
+			}
+		}
+	}
+
+	.panel {
+		margin-top: 0;
+		border-bottom: 0;
+		border-left: 0;
+		border-right: 0;
+		@media (max-width: 991px) {
+			border-left: 1px solid #e9e9e9;
+			border-right: 1px solid #e9e9e9;
+		}
+		&:last-child{
+			@media (max-width: 991px) {
+				border-bottom: 1px solid #e9e9e9;
+			}
+		}
+		&.panel {
+			margin-top: 0;
+		}
+
+		.panel-heading {
+			padding: 0;
+			border-radius: 0;
+			background-color: transparent;
+			cursor: pointer;
+
+			a {
+				display: block;
+				background-color: $light-color;
+
+				&.active {
+					background-color: #f6f6f6;
+				}
+
+				&[aria-expanded="true"] {
+					background-color: #f6f6f6;
+				}
+
+				&[aria-expanded="false"] {
+					background-color: $light-color;
+				}
+
+				h2 {
+					font-size: 20px;
+					margin: 0;
+					margin-right: 10px;
+					line-height: 50px;
+					font-weight: 400;
+					color: $brand-primary;
+					border-right: 1px solid #eee;
+					width: 60px;
+					display: inline-block;
+					height: 50px;
+					vertical-align: middle;
+					text-align: center;
+				}
+
+				p {
+					font-size: 14px;
+					font-weight: 400;
+					color: $brand-primary;
+					display: inline-block;
+					vertical-align: middle;
+					margin: 0;
+				}
+			}
+		}
+
+		.panel-body {
+			padding: 0;
+		}
+	}
+
+	.ishicategory {
+		position: relative;
+		text-align: center;
+
+		.image-container {
+			display: block;
+			position: relative;
+
+			a {
+				display: inline-block;
+				vertical-align: middle;
+				position: relative;
+
+				img {
+					max-width: 100%;
+					-webkit-transition: all 0.5s;
+					-moz-transition: all 0.5s;
+					-o-transition: all 0.5s;
+					transition: all 0.5s;
+				}
+			}
+
+			.text-container {
+				display: block;
+				cursor: pointer;
+				font-size: 16px;
+				margin-left: 10px;
+				line-height: 50px;
+				font-weight: 400;
+				color: $brand-primary;
+				text-transform: uppercase;
+			}
+			&:hover {
+				a {
+					img {
+						opacity: .3;
+					}
+				}
+			}
+		}
+	}
+}

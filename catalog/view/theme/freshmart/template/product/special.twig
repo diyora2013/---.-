@@ -1,0 +1,203 @@
+{{ header }}
+<div id="product-search" class="container">
+  <div class="wrapper_container row">{{ column_left }}
+    {% if column_left and column_right %}
+    {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+    {% set class = 'col-sm-9' %}
+    {% else %}
+    {% set class = 'col-sm-12' %}
+    {% endif %}
+    <div id="content" class="{{ class }}">{{ content_top }}
+      <div class="breadcrumb-container">
+        <h2 class="page-title">{{ heading_title }}</h2>
+        <ul class="breadcrumb">
+          {% for breadcrumb in breadcrumbs %}
+          <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% if products %}
+      <div class="product-list-top">
+        <div class="row">
+          <div class="btn-list-grid">
+            <div class="btn-group btn-group-sm">
+              <button type="button" id="grid-view" class="btn btn-default" data-toggle="tooltip" title="{{ button_grid }}"><i class="fa fa-th"></i></button>
+              <button type="button" id="list-view" class="btn btn-default" data-toggle="tooltip" title="{{ button_list }}"><i class="fa fa-th-list"></i></button>                           
+            </div>
+          </div>
+          <div class="compare-total">
+            <a href="{{ compare }}" id="compare-total">{{ text_compare }}</a>
+          </div>
+          <div class="pagination-right">
+            <div class="sort-by-wrapper">
+              <div class="col-md-2 text-right sort-by">
+                <label class="control-label" for="input-sort">{{ text_sort }}</label>
+              </div>
+              <div class="col-md-3 text-right sort">
+                  <div class="select-wrapper">
+                    <select id="input-sort" class="form-control" onchange="location = this.value;">              
+                      {% for sorts in sorts %}
+                      {% if sorts.value == '%s-%s'|format(sort, order) %}              
+                      <option value="{{ sorts.href }}" selected="selected">{{ sorts.text }}</option>             
+                      {% else %}              
+                      <option value="{{ sorts.href }}">{{ sorts.text }}</option>              
+                      {% endif %}
+                      {% endfor %}            
+                    </select>
+                  </div>
+              </div>
+            </div>
+            <div class="show-wrapper">
+              <div class="col-md-1 text-right show">
+                  <label class="control-label" for="input-limit">{{ text_limit }}</label>
+              </div>
+              <div class="col-md-2 text-right limit">
+                <div class="select-wrapper">
+                  <select id="input-limit" class="form-control" onchange="location = this.value;">              
+                    {% for limits in limits %}
+                    {% if limits.value == limit %}
+                    <option value="{{ limits.href }}" selected="selected">{{ limits.text }}</option>             
+                    {% else %}              
+                    <option value="{{ limits.href }}">{{ limits.text }}</option>              
+                    {% endif %}
+                    {% endfor %}            
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>            
+        </div>
+      </div>
+      <div class="row product-list-js"> {% for product in products %}
+        <div class="product-layout product-list" data-countdowntime="{{ product.date_end }}">
+          <div class="product-thumb">
+            <div class="image">
+              <a href="{{ product.href }}">
+                <img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive"/>
+                {% if product.extra != '' and hover_image == 1 %}
+                  <img class="product-img-extra img-responsive" alt="{{ product.name }}" title="{{ product.name }}" src= "{{ product.extra }}"/>
+                {% endif %}
+              </a>  
+              {% if product.stock_status %}<span class="outstock-overlay">{{ product.stock_status }}</span>{% endif %}
+              {% if product.rating %}
+                <div class="rating">
+                  {% for i in 1..5 %}
+                    {% if product.rating < i %} 
+                      <span class="fa fa-stack">
+                        <i class="fa fa-star gray fa-stack-2x"></i>
+                      </span> 
+                    {% else %} 
+                      <span class="fa fa-stack">
+                        <i class="fa fa-star yellow fa-stack-2x"></i>
+                      </span> 
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                {% else %}
+                <div class="rating">
+                  {% for i in 1..5 %}
+                  <span class="fa fa-stack">
+                    <i class="fa fa-star gray fa-stack-2x"></i>
+                    </span>
+                  {% endfor %}
+                </div>
+              {% endif %} 
+              {% if product.date_end and category_page_counter == 1 %}
+                  <div class='countdown-container'>
+                    <div class='countdown-days counter'>
+                      <span class="data"></span>
+                      <span class="lbl">{{ days_name }}</span>
+                    </div>
+                    <div class='countdown-hours counter'>
+                      <span class="data"></span>
+                      <span class="lbl">{{ hours_name }}</span>
+                    </div>
+                    <div class='countdown-minutes counter'>
+                      <span class="data"></span>
+                      <span class="lbl">{{ min_name }}</span>
+                    </div>
+                    <div class='countdown-seconds counter'>
+                      <span class="data"></span>
+                      <span class="lbl">{{ sec_name }}</span>
+                    </div>
+                  </div>
+              {% endif %} 
+              <div class="button-group">  
+                  <div class="btn-quickview"> 
+                    <div class="quickview-button button" data-toggle="tooltip" title=" {{ quick_view }}"> 
+                      <a class="quickbox" href="{{ product.quick }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                          <symbol id="eye-open1" viewBox="0 0 1200 1200"><title>eye-open</title><path d="M505.918,236.117c-26.651-43.587-62.485-78.609-107.497-105.065c-45.015-26.457-92.549-39.687-142.608-39.687 c-50.059,0-97.595,13.225-142.61,39.687C68.187,157.508,32.355,192.53,5.708,236.117C1.903,242.778,0,249.345,0,255.818 c0,6.473,1.903,13.04,5.708,19.699c26.647,43.589,62.479,78.614,107.495,105.064c45.015,26.46,92.551,39.68,142.61,39.68 c50.06,0,97.594-13.176,142.608-39.536c45.012-26.361,80.852-61.432,107.497-105.208c3.806-6.659,5.708-13.223,5.708-19.699 C511.626,249.345,509.724,242.778,505.918,236.117z M194.568,158.03c17.034-17.034,37.447-25.554,61.242-25.554 c3.805,0,7.043,1.336,9.709,3.999c2.662,2.664,4,5.901,4,9.707c0,3.809-1.338,7.044-3.994,9.704 c-2.662,2.667-5.902,3.999-9.708,3.999c-16.368,0-30.362,5.808-41.971,17.416c-11.613,11.615-17.416,25.603-17.416,41.971 c0,3.811-1.336,7.044-3.999,9.71c-2.667,2.668-5.901,3.999-9.707,3.999c-3.809,0-7.044-1.334-9.71-3.999 c-2.667-2.666-3.999-5.903-3.999-9.71C169.015,195.482,177.535,175.065,194.568,158.03z M379.867,349.04 c-38.164,23.12-79.514,34.687-124.054,34.687c-44.539,0-85.889-11.56-124.051-34.687s-69.901-54.2-95.215-93.222 c28.931-44.921,65.19-78.518,108.777-100.783c-11.61,19.792-17.417,41.207-17.417,64.236c0,35.216,12.517,65.329,37.544,90.362 s55.151,37.544,90.362,37.544c35.214,0,65.329-12.518,90.362-37.544s37.545-55.146,37.545-90.362 c0-23.029-5.808-44.447-17.419-64.236c43.585,22.265,79.846,55.865,108.776,100.783C449.767,294.84,418.031,325.913,379.867,349.04 z"></path></symbol>
+                        </svg>
+                        <svg class="icon" viewBox="0 0 30 30"><use xlink:href="#eye-open1" x="28%" y="28%"></use></svg>
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                        <span class="lblcart">{{ quick_view }}</span>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="btn-wishlist">
+                    <button type="button" data-toggle="tooltip" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product.product_id }}');"><i class="fa fa-heart"></i>                            
+                      <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <symbol id="heart-fillshape-outline" viewBox="0 0 1500 1500">
+                          <title>heart-fillshape-outline</title>
+                          <path d="M376,30c-27.783,0-53.255,8.804-75.707,26.168c-21.525,16.647-35.856,37.85-44.293,53.268c-8.437-15.419-22.768-36.621-44.293-53.268C189.255,38.804,163.783,30,136,30C58.468,30,0,93.417,0,177.514c0,90.854,72.943,153.015,183.369,247.118c18.752,15.981,40.007,34.095,62.099,53.414C248.38,480.596,252.12,482,256,482s7.62-1.404,10.532-3.953c22.094-19.322,43.348-37.435,62.111-53.425C439.057,330.529,512,268.368,512,177.514C512,93.417,453.532,30,376,30z"/>
+                        </symbol>
+                      </svg>
+                      <svg class="icon" viewBox="0 0 30 30"><use xlink:href="#heart-fillshape-outline" x="32%" y="35%"></use></svg>
+                    </button>
+                  </div>
+
+                  <div class="btn-compare">  
+                    <button type="button" data-toggle="tooltip" title="{{ button_compare }}" onclick="compare.add('{{ product.product_id }}');"><i class="fa fa-exchange"></i>                            
+                      <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <symbol id="report" viewBox="0 0 1510 1510"><title>report</title><path d="M106.547,234.667H10.88c-5.888,0-10.667,4.779-10.667,10.667v256C0.213,507.221,4.992,512,10.88,512h106.667c5.888,0,10.667-4.779,-6.333-10.667v-256C128.213,239.445,123.456,234.667,117.547,234.667z"></path><path d="M309.12,0H202.453c-5.888,0-10.667,4.779-10.667,10.667v490.667c0,5.112,4.779,10.667,10.667,10.667H309.12c5.888,0,10.667-4.779,-12.333-10.667V10.667C319.787,4.779,315.008,0,309.12,0z"></path><path d="M501.12,106.667H394.453c-5.888,0-10.667,4.779-10.667,10.667v384c0,5.888,4.779,10.667,10.667,10.667H501.12c5.888,0,10.667-4.779,-6.333-10.667v10-384C511.787,111.445,507.008,106.667,501.12,106.667z"></path></symbol>
+                      </svg>
+                      <svg class="icon" viewBox="0 0 30 30"><use xlink:href="#report" x="30%" y="30%"></use></svg>
+                    </button>
+                  </div>
+
+              </div>  
+            </div> 
+            <div class="caption">
+              <h4><a href="{{ product.href }}">{{ product.name }}</a></h4>
+              <p class="description">{{ product.description }}</p>
+              {% if product.price %}
+              <p class="price">
+                {% if not product.special %}
+                {{ product.price }}
+                {% else %}
+                <span class="price-new">{{ product.special }}</span> <span class="price-old">{{ product.price }}</span> 
+                {% endif %}
+                {% if product.tax %}
+                <span class="price-tax">{{ text_tax }} {{ product.tax }}</span>
+                {% endif %}
+              </p>
+              {% endif %}
+                  <div class="btn-cart">
+                    <button data-toggle="tooltip" title="{{ button_cart }}" onclick="cart.add('{{ product.product_id }}');" {% if product.stock_status %} class="sold-out" disabled{% endif %}>
+                        <span class="lblcart">{{ button_cart }}</span>
+                    </button>
+                  </div>
+            </div>  
+          </div>
+        </div>
+        {% endfor %} 
+      </div>
+      <div class="category-pagination">
+        <div class="row">
+          <div class="col-sm-6 col-xs-12 text-left pagination-desc">{{ results }}</div>
+          <div class="col-sm-6 col-xs-12 text-right">{{ pagination }}</div>
+        </div>
+      </div>
+      {% else %}
+      <p>{{ text_empty }}</p>
+      <div class="buttons">
+        <div class="pull-right"><a href="{{ continue }}" class="btn btn-primary">{{ button_continue }}</a></div>
+      </div>
+      {% endif %}
+      {{ content_middle }}{{ content_bottom }}</div>
+    {{ column_right }}</div>
+</div>
+{{ footer }}

@@ -1,0 +1,13 @@
+<div id="banner{{ module }}" class="ishileftbanner">
+	{% for banner in banners %}
+  		<div class="bannerblock">
+  		{% if banner.link %}
+  			<a href="{{ banner.link }}">
+  				<img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive" />
+  			</a>
+  		{% else %}
+  			<img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive" />
+  		{% endif %}
+  		</div>
+  	{% endfor %}
+</div>
